@@ -13,8 +13,7 @@ function Navbar() {
     return (
         <header className="navbar">
             <a href="#home" className="logo">
-                <img src={logo} alt="PAWsitive Daycare Logo"
-                style={{height: "40px", marginRight: "10px"}}/>
+                <img src={logo} alt="PAWsitive Daycare Logo"/>
                 <span className="brand-name">
                     <strong>PAWsitive</strong>
                     <br />
