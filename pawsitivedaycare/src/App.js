@@ -9,11 +9,14 @@ function App() {
     return (
         <div className="App">
             <Navbar />
-            <Hero />
-            <Services />
+            <main>
+                <Hero />
+                <Services />   
+            </main>
             <Footer />
         </div>
     );
 }
+
 
 export default App;

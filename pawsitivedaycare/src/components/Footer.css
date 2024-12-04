@@ -1,12 +1,23 @@
-footer {
-    background: #2a2a72;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  footer .social-icons a img {
-    width: 30px;
-    margin: 0 10px;
-  }
-  
+.footer {
+  background-color: #2a2a72;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+  gap: 20px; /* Space between the icons */
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain; /* Ensure the icons fit without distortion */
+  transition: transform 0.3s ease; /* Add a hover effect */
+}
+
+.social-icon:hover {
+  transform: scale(1.2); /* Enlarge the icons slightly on hover */
+}

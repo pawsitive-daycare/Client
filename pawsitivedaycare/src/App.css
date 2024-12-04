@@ -1,13 +1,16 @@
-body {
-  font-family: 'Arial', sans-serif;
+/* Apply Flexbox to the Entire Page */
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
+  height: 100%; /* Full height of the viewport */
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make the container fill the full height of the viewport */
+}
+
+.content {
+  flex: 1; /* Push the footer to the bottom by taking up remaining space */
 }
