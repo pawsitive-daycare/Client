@@ -54,21 +54,23 @@
     transform: scale(1.05);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 500px) {
     .hero-content {
-      padding: 20px 30px; /* Reduce padding */
+      width: 70%; /* Shrink the box width */
+      padding: 3px; /* Reduce padding inside the box */
     }
   
     .hero-content h1 {
-      font-size: 2rem; /* Smaller title */
+      font-size: 1.5rem; /* Smaller title */
     }
   
     .hero-content p {
-      font-size: 1rem; /* Smaller subtitle */
+      font-size: 0.75rem; /* Smaller subtitle */
     }
   
-    .hero-buttons {
-      flex-direction: column; /* Stack buttons vertically */
+    .hero-content button {
       gap: 10px; /* Smaller gap between buttons */
+      font-size: 0.8rem; /* Even smaller font size */
+      padding: 6px 10px; /* Further reduce padding */
     }
   }
