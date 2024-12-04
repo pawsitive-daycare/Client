@@ -2,90 +2,98 @@
     display: flex;
     justify-content: space-between; /* Spread out the content */
     align-items: center; /* Align items vertically */
-    background: #2a2a72;
+    background: #29335C;
     color: white;
-    padding: 15px 30px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
   }
-  
-  .navbar .menu {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    gap: 30px; /* Space between the navigation items */
-    flex-grow: 1; /* Allow the menu to take up available space */
-  }
+ 
+  /* Links and Button Wrapper */
+.nav-content {
+  display: flex;
+  align-items: center; /* Align links and button vertically */
+  justify-content: flex-end; /* Push links and button to the right */
+  flex: 1; /* Take remaining space after logo */
+}
 
-  .navbar .menu li {
-    font-size: 1rem; /* Font size for the navigation items */
-  }
-  
-  .navbar .menu li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar .cta-buttons {
-    display: flex;
-    align-items: center; /* Align buttons horizontally */
-    gap: 20px; /* Space between the buttons */
-  }
-
-  .navbar .menu li a:hover {
-    color: #ff6f61; /* Change color on hover */
-  }
-
-  .nav-links ul {
+  .nav-links {
     display: flex;
     list-style: none;
+    gap: 20px; /* Space between links */
+    margin: 0;
+    padding: 0;
+    flex: 1; /* Push the Log In button to the far right */
+    justify-content: center; /* Center the links */
   }
   
-  .nav-links ul li {
-    margin: 0 10px;
+  .nav-links li {
+    display: inline-block;
   }
   
-  .nav-links ul li a {
-    color: white;
+  .nav-links li a {
     text-decoration: none;
-  }
-  
-  .navbar .cta-buttons {
-    display: flex;
-    align-items: center; /* Align buttons vertically on the same line */
-    gap: 20px; /* Space between the buttons */
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
   }
 
-  .navbar .login-btn {
-    background-color: #334486; /* Blue background */
+  .nav-links a:hover {
+    color: #ffc107; /* Change color on hover */
+  }
+  
+  .login-btn {
+    background-color: #3b5998;
     color: white;
-    padding: 8px 18px; /* Adjust padding for smaller size */
     border: none;
-    border-radius: 50%; /* Make it circular */
-    font-size: 0.875rem; /* Smaller font size */
-    width: 40px; /* Set width and height for a circular button */
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
     cursor: pointer;
+    margin-left: 20px; /* Add space between links and button */
     transition: background-color 0.3s ease;
   }
   
-  .navbar .login-btn:hover {
-    background-color: #ff6f61; /* Change to a red color on hover */
+  .login-btn:hover {
+    background-color: #2a468c; /* Change to a red color on hover */
   }
 
-  .navbar .logo {
+  .signup-btn {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 20px; /* Add space between links and button */
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-btn:hover {
+    background-color: #2a468c; /* Change to a red color on hover */
+  }
+
+  .logo {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
-    font-weight: bold;
     text-decoration: none;
     color: white;
   }
 
+  .logo img {
+    width: 40px; /* Set a specific width */
+    height: 40px; /* Set a specific height, should be equal to width for a perfect circle */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensures the image covers the container without distorting */
+    margin-right: 10px; /* Space between logo and text */
+  }
+  
+  .logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
   .hamburger-menu {
     display: none;
     font-size: 1.5em;
@@ -113,25 +121,4 @@
     .hamburger-menu {
       display: block;
     }
-  }
-  
-
-  .logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-  }
-  
-  .logo img {
-    width: 40px; /* Set a specific width */
-    height: 40px; /* Set a specific height, should be equal to width for a perfect circle */
-    border-radius: 50%; /* Make the image circular */
-    object-fit: cover; /* Ensures the image covers the container without distorting */
-    margin-right: 10px; /* Space between logo and text */
-  }
-  
-  .logo span {
-    font-size: 1.5rem;
-    font-weight: bold;
   }

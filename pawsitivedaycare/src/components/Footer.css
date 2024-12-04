@@ -1,17 +1,19 @@
 .footer {
-  background-color: #2a2a72;
+  background-color: #29335C;
   color: white;
   text-align: center;
   padding: 20px 10px;
   position: relative;
   margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .social-media {
   display: flex;
   justify-content: center; /* Center the icons horizontally */
   gap: 25px; /* Space between the icons */
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .social-icon {
