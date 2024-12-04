@@ -2,13 +2,16 @@
   background-color: #2a2a72;
   color: white;
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 10px;
+  position: relative;
+  margin: 0;
 }
 
 .social-media {
   display: flex;
   justify-content: center; /* Center the icons horizontally */
-  gap: 20px; /* Space between the icons */
+  gap: 25px; /* Space between the icons */
+  margin-bottom: 10px;
 }
 
 .social-icon {

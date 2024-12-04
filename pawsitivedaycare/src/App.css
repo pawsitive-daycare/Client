@@ -13,4 +13,6 @@ html, body {
 
 .content {
   flex: 1; /* Push the footer to the bottom by taking up remaining space */
+  padding: 20px;
+  text-align: center;
 }
