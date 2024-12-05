@@ -1,6 +1,6 @@
 /* Hero Section */
 .about-hero {
-    height: 50vh;
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
   
   .hero-logo {
     max-width: 60%;
-    height: auto;
+    height: 110%;
     border-radius: 5%;
   }
   
@@ -61,4 +61,16 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 500px) {
+    .hero-logo {
+      max-width: 60%;
+      height: auto;
+      border-radius: 5%;
+    }
+
+    .about-hero {
+      height: 30vh;
+    }
   }
