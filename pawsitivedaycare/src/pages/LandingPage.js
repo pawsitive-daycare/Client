@@ -1,6 +1,5 @@
 import React from "react";
-import "../styles/Hero.css";
-import "../styles/Services.css";
+import "../styles/LandingPage.css"
 import PetDaycare from "../assets/Pet Daycare.jpg";
 import PetGrooming from "../assets/Pet Grooming.jpg";
 import DogWalking from "../assets/Dog Walking.jpg";

@@ -4,18 +4,18 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Footer";
 import "./App.css";
+import ServicesPage from "./pages/ServicesPage";
 
 function App() {
     return (
         <Router>
         <div className="page-container">
             <Navbar />
-            <Routes>
-                <Route path="Home" element={<LandingPage />} /> 
-                <Route path="Services" element={<ServicesPage />} />
-            </Routes>
             <main className="content">
-                <LandingPage />   
+            <Routes>
+                <Route path="Home" element={<LandingPage />} />
+                <Route path="Services" element={ <ServicesPage />} />  
+            </Routes>
             </main>
             <Footer />
         </div>

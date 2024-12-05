@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.jpg";
+import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 
@@ -23,8 +24,8 @@ function Navbar() {
             
             <nav className={`nav-content ${menuOpen ? "mobile" : ""}`}>
                 <ul className="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><Link to="Home">Home</Link></li>
+                    <li><Link to="Services">Services</Link></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>

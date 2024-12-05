@@ -1,0 +1,107 @@
+/* Hero Section */
+.services-hero {
+    height: 30vh;
+    background-image: url('../assets/dogbackground.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden; 
+    
+    border-radius: 15px;
+  }
+  
+  .services-hero-text h1 {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    
+  }
+  
+  /* Services Details */
+  .services-details {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .service-section {
+    margin-bottom: 30px;
+    
+  }
+
+  .services-content {
+    display: flex; /* Enable horizontal layout */
+    justify-content: space-between; /* Space out the content */
+    align-items: flex-start; /* Align items at the top */
+    margin-bottom: 30px;
+    gap: 20px; /* Add space between pricing and description */
+    flex-wrap: wrap; /* Wrap for smaller screens */
+  }
+
+  .services-pricing {
+    background: #E2E8FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    line-height: 1;
+    text-align: left;
+    border-radius: 5%;
+    padding: 20px;
+  }
+
+  .services-description {
+    flex: 1; /* Allow the description to take the remaining space */
+    font-size: 1rem;
+    color: #333;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #E2E8FF;
+    
+  }
+
+  .service-image {
+    width: 100px; /* Adjust size of the image */
+    height: 100px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 30px;
+    color: white;
+  }
+  
+  .cta-button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #2a2a72;
+  }
+  
+
+  @media (max-width: 500px) {
+    .services-details {
+      line-height: 0.75; /* Even tighter spacing for small screens */
+      font-size: 13px;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .services-pricing {
+        width: 100%;
+    }
+
+    .services-description {
+        width: 100%; 
+        line-height: 1;
+    }
+  }
