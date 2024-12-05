@@ -1,9 +1,11 @@
 /* Form Container */
 .sign-up-page {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    height: 80vh; 
   }
   
   .sign-up-form-container {
@@ -69,4 +71,18 @@
     text-align: center;
     width: 100%;
     margin-top: 15px;
+  }
+
+  @media (max-width: 500px) {
+    .sign-up-form {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .sign-up-form-container {
+      width: 300px;
+    }
   }
