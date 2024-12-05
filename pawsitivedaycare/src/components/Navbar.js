@@ -26,8 +26,8 @@ function Navbar() {
                 <ul className="nav-links">
                     <li><Link to="Home">Home</Link></li>
                     <li><Link to="Services">Services</Link></li>
-                    <li><a href="#pricing">Pricing</a></li>
                     <li><Link to="Contact Us">Contact Us</Link></li>
+                    <li><Link to="About Us">About Us</Link></li>
                 </ul>
                     <button className="login-btn">
                         <span className="login-text">Log In</span>

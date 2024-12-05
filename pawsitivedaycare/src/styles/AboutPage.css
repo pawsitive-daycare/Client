@@ -1,0 +1,64 @@
+/* Hero Section */
+.about-hero {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+  }
+  
+  .hero-logo {
+    max-width: 60%;
+    height: auto;
+    border-radius: 5%;
+  }
+  
+  /* Vision Section */
+  .vision-section {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  .vision-title {
+    font-size: 2rem;
+    color: #2a2a72;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    background-color: #2a2a72;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+  }
+  
+  .vision-content {
+    background: #e6f0ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .vision-content blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Pet Photos Section */
+  .pet-photos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+  }
+  
+  .pet-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
