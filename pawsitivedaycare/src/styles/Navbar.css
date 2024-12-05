@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
-    justify-content: space-between; /* Spread out the content */
-    align-items: center; /* Align items vertically */
+    justify-content: space-between; 
+    align-items: center; 
     background: #29335C;
     color: white;
     padding: 10px 20px;
@@ -12,19 +12,19 @@
   /* Links and Button Wrapper */
 .nav-content {
   display: flex;
-  align-items: center; /* Align links and button vertically */
-  justify-content: flex-end; /* Push links and button to the right */
-  flex: 1; /* Take remaining space after logo */
+  align-items: center; 
+  justify-content: flex-end; 
+  flex: 1; 
 }
 
   .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px; /* Space between links */
+    gap: 20px; 
     margin: 0;
     padding: 0;
-    flex: 1; /* Push the Log In button to the far right */
-    justify-content: center; /* Center the links */
+    flex: 1; 
+    justify-content: center; 
   }
   
   .nav-links li {

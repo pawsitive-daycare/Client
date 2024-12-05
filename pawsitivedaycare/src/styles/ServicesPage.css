@@ -9,7 +9,6 @@
     align-items: center;
     color: white;
     overflow: hidden; 
-    
     border-radius: 15px;
   }
   
@@ -90,7 +89,7 @@
 
   @media (max-width: 500px) {
     .services-details {
-      line-height: 0.75; /* Even tighter spacing for small screens */
+      line-height: 0.75; 
       font-size: 13px;
       flex-direction: column;
       gap: 20px;

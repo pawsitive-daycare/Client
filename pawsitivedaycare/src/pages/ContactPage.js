@@ -33,17 +33,6 @@ function ContactPage() {
           <button type="submit" className="submit-button">Send</button>
         </form>
       </div>
-
-      {/* Footer Section */}
-      <div className="contact-footer">
-        <button className="call-us-button">CALL US</button>
-        <div className="social-icons">
-          <a href="#"><i className="fab fa-tiktok"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fas fa-envelope"></i></a>
-          <a href="#"><i className="fab fa-facebook"></i></a>
-        </div>
-      </div>
     </div>
   );
 }

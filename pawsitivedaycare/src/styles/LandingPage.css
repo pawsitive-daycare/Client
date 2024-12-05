@@ -61,17 +61,17 @@
       }
     
       .hero-content h1 {
-        font-size: 1.5rem; /* Smaller title */
+        font-size: 1.5rem; 
       }
     
       .hero-content p {
-        font-size: 0.75rem; /* Smaller subtitle */
+        font-size: 0.75rem; 
       }
     
       .hero-content button {
-        gap: 10px; /* Smaller gap between buttons */
-        font-size: 0.8rem; /* Even smaller font size */
-        padding: 6px 10px; /* Further reduce padding */
+        gap: 10px; 
+        font-size: 0.8rem; 
+        padding: 6px 10px; 
       }
     }
 

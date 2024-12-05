@@ -1,12 +1,15 @@
 /* Hero Section */
 .contact-hero {
-    height: 50vh;
-    background-image: url("../assets/contact-hero.jpg"); /* Add your background image */
+    height: 30vh;
+    background-image: url("../assets/guineapig.jpg"); 
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    overflow: hidden; 
+    border-radius: 15px;
   }
   
   .contact-hero-text h1 {
@@ -41,10 +44,11 @@
     font-size: 1rem;
     color: white;
     margin-bottom: 5px;
+    font-weight: bold;
   }
   
   input, textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -58,9 +62,10 @@
   }
   
   .submit-button {
-    background: #ffc107;
-    color: #2a2a72;
+    background: #3b5998;
+    color: white;
     font-size: 1rem;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -69,39 +74,3 @@
     width: 100%;
     margin-top: 15px;
   }
-  
-  /* Footer Section */
-  .contact-footer {
-    background: #2a2a72;
-    padding: 20px;
-    text-align: center;
-    color: white;
-  }
-  
-  .call-us-button {
-    background: #ffc107;
-    color: #2a2a72;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .social-icons a {
-    color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: #ffc107;
-  }
-  
