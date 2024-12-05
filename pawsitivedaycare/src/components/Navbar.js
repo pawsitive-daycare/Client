@@ -32,9 +32,11 @@ function Navbar() {
                     <button className="login-btn">
                         <span className="login-text">Log In</span>
                     </button>
-                    <button className="signup-btn">
-                        <span className="signup-text">Sign Up</span>
-                    </button>
+                    <Link to="Sign Up">
+                        <button className="signup-btn">
+                            <span className="signup-text">Sign Up</span>
+                        </button>
+                    </Link>
                     
             </nav>
             <button className="hamburger-menu" onClick={toggleMenu}>
