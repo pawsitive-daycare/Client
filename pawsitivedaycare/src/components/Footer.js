@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "../styles/Footer.css";
 import FacebookLogo from "../assets/Facebook.png";
 import InstagramLogo from "../assets/Instagram.png";
 import TiktokLogo from "../assets/Tiktok.png";
