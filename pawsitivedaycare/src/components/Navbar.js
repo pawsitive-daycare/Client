@@ -14,12 +14,16 @@ function Navbar() {
     return (
         <header className="navbar">
             <a href="#home" className="logo">
+                <Link to="Home">
                 <img src={logo} alt="PAWsitive Daycare Logo"/>
+                </Link>
+                <Link to="Home">
                 <span className="brand-name">
                     <strong>PAWsitive</strong>
                     <br />
                     Daycare
                 </span>
+                </Link>
             </a>
             
             <nav className={`nav-content ${menuOpen ? "mobile" : ""}`}>
@@ -29,9 +33,11 @@ function Navbar() {
                     <li><Link to="Contact Us">Contact Us</Link></li>
                     <li><Link to="About Us">About Us</Link></li>
                 </ul>
-                    <button className="login-btn">
-                        <span className="login-text">Log In</span>
-                    </button>
+                    <Link to="Log In">
+                        <button className="login-btn">
+                            <span className="login-text">Log In</span>
+                        </button>
+                    </Link>
                     <Link to="Sign Up">
                         <button className="signup-btn">
                             <span className="signup-text">Sign Up</span>

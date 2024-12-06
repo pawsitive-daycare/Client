@@ -75,10 +75,20 @@
   }
 
   .logo {
+    color: white;
     display: flex;
     align-items: center;
     text-decoration: none;
+    
+  }
+
+  .brand-name {
     color: white;
+  }
+
+  .brand-name a:active {
+    text-decoration: none;
+    color: inherit; /* Keep the same color */
   }
 
   .logo img {

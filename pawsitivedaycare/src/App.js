@@ -7,6 +7,7 @@ import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
 import AboutPage from "./pages/AboutPage";
 import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="Services" element={ <ServicesPage />} />  
                 <Route path="Contact Us" element={ <ContactPage />} />  
                 <Route path="About Us" element={ <AboutPage />} />
+                <Route path="Log In" element={ <LoginPage />} />
                 <Route path="Sign Up" element={ <SignUpPage />} />
             </Routes>
             </main>
