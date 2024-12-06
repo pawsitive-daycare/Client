@@ -32,6 +32,8 @@ function Navbar() {
                     <li><Link to="Services">Services</Link></li>
                     <li><Link to="Contact Us">Contact Us</Link></li>
                     <li><Link to="About Us">About Us</Link></li>
+
+                    <li><Link to="Main Dashboard">Main Dashboard</Link></li>
                 </ul>
                     <Link to="Log In">
                         <button className="login-btn">

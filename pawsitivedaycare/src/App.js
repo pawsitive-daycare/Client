@@ -8,6 +8,7 @@ import ServicesPage from "./pages/ServicesPage";
 import AboutPage from "./pages/AboutPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
+import MainDashboard from "./pages/MainDashboard";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="About Us" element={ <AboutPage />} />
                 <Route path="Log In" element={ <LoginPage />} />
                 <Route path="Sign Up" element={ <SignUpPage />} />
+                <Route path="Main Dashboard" element={ <MainDashboard />} />
             </Routes>
             </main>
             <Footer />
@@ -30,6 +32,5 @@ function App() {
         </Router>
     );
 }
-
 
 export default App;
