@@ -25,16 +25,6 @@ function ServicesPage() {
             </p>
             <div className="services-pricing">
               <h3>Prices</h3>
-              <p><strong>One Pet:</strong></p>
-              <p>Casual Day - $78 a day</p>
-              <p>5 pack - $330 ($66 a day)</p>
-              <p>10 pack - $620 ($62 a day)</p>
-              <p>20 pack - $1180 ($59 a day)</p>
-              <p><strong>Two Pets:</strong></p>
-              <p>Casual Day - $135 a day</p>
-              <p>5 pack - $630 ($126 a day)</p>
-              <p>10 pack - $1200 ($120 a day)</p>
-              <p>20 pack - $2360 ($118 a day)</p>
             </div>
             
             <img src={Rabbit} alt="Small Animal" className="service-image" />
@@ -48,11 +38,7 @@ function ServicesPage() {
               We also offer grooming services so your pets can enjoy a bath, clip, and tidy, leaving them clean and looking their best!
             </p>
             <div className="services-pricing">
-              <h3>Prices</h3>
-              <p>Tidy-up Trim - $43</p>
-              <p>Teddy Bear Cut - $100</p>
-              <p>Lion Cut - $100</p>
-              <p>Asian Scissor Trim - $120</p>
+            <h3>Prices</h3>
             </div>
             
             <img src={Parrot} alt="Small Animal" className="service-image" />
@@ -67,12 +53,7 @@ function ServicesPage() {
             </p>
             <div className="services-pricing">
               <h3>Prices</h3>
-              <p>Small Dog (0-10kg): $15</p>
-              <p>Medium Dog (11-20kg): $24</p>
-              <p>Large Dog (21-45kg): $36</p>
-              <p>Giant Dog (46kg+): $45</p>
-              <p>Cat (All): $13</p>
-              <p>Small Animal: $10</p>
+              
             </div>
             
             <img src={Hamster} alt="Small Animal" className="service-image" />
