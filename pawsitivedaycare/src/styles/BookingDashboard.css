@@ -28,7 +28,6 @@
   
   .book-appointment-container {
     display: flex;
-    justify-content: space-between;
     width: 90%;
     gap: 20px;
   }
@@ -104,4 +103,27 @@
   .react-calendar__tile--active {
     background: #2a2a72;
     color: white;
+  }
+
+  @media (max-width: 500px) {
+    .book-appointment-page {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    
+    
+    .booking-appointment-container {
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .appointment-form,
+    .calendar-section {
+      display: flex;
+      width: 100%; /* Make both sections take full width */
+      max-width: 100%;  
+      flex-direction: column; /* Stack elements vertically */
+      
+    }
   }

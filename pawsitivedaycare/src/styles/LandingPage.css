@@ -54,26 +54,7 @@
       transform: scale(1.05);
     }
   
-    @media (max-width: 500px) {
-      .hero-content {
-        width: 70%; /* Shrink the box width */
-        padding: 3px; /* Reduce padding inside the box */
-      }
-    
-      .hero-content h1 {
-        font-size: 1.5rem; 
-      }
-    
-      .hero-content p {
-        font-size: 0.75rem; 
-      }
-    
-      .hero-content button {
-        gap: 10px; 
-        font-size: 0.8rem; 
-        padding: 6px 10px; 
-      }
-    }
+
 
     /* Services Section */
 .services {
@@ -146,4 +127,24 @@
     background-color: #1f1f5f;
     transform: scale(1.05);
   }
-  
+
+  @media (max-width: 500px) {
+  .hero-content {
+    width: 70%; /* Shrink the box width */
+    padding: 3px; /* Reduce padding inside the box */
+    }
+    
+    .hero-content h1 {
+      font-size: 1.5rem; 
+    }
+    
+    .hero-content p {
+      font-size: 0.75rem; 
+    }
+    
+    .hero-content button {
+      gap: 10px; 
+      font-size: 0.8rem; 
+      padding: 6px 10px; 
+    }
+  }
