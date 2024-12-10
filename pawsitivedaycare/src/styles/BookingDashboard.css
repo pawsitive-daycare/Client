@@ -1,0 +1,107 @@
+/* Page Container */
+.book-appointment-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;        /* Center horizontally */
+    background-color: #f9f9f9; /* Background color for the page */
+    padding: 20px;
+    box-sizing: border-box;     /* Include padding in the height calculation */
+    
+  }
+  
+  /* Header Styling */
+  .book-appointment-header {
+    background-color: #2a2a72;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .appointment-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2a2a72;
+  }
+  
+  .book-appointment-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    gap: 20px;
+  }
+
+  /* Form Container */
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px; /* Set a max width for the form */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: auto;  
+    background-color: #2a2a72;
+  }
+
+  ::placeholder {
+    color: white;
+  }
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  select,
+  input,
+  textarea {
+    width: 95%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #2a2a72;
+    color: white
+  }
+  
+  .save-button {
+    background-color: #2a2a72;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+  }
+  
+  .save-button:hover {
+    background-color: #4f6ef5;
+  }
+  
+  .calendar-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calendar-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .react-calendar {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .react-calendar__tile--active {
+    background: #2a2a72;
+    color: white;
+  }

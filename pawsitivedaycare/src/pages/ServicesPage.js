@@ -3,6 +3,7 @@ import "../styles/ServicesPage.css";
 import Rabbit from "../assets/rabbit.jpg";
 import Parrot from "../assets/parrot.jpg";
 import Hamster from "../assets/Hamster.jpg";
+import { Link } from "react-router-dom";
 
 function ServicesPage() {
   return (
@@ -81,7 +82,9 @@ function ServicesPage() {
 
       {/* Call to Action */}
       <div className="cta-section">
-        <button className="cta-button">Book Now!</button>
+        <Link to="Booking Dashboard">
+          <button className="cta-button">Book Now!</button>
+        </Link>
       </div>
     </div>
   );
