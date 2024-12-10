@@ -38,6 +38,12 @@ function BookingDashboard() {
             <input type="name" id="name" placeholder="Name of pet" value={name} onChange={(e) => setName(e.target.value)}/>  
           </div>  
 
+          <div className="calendar-section">
+            <h3>Select Date</h3>
+              <Calendar onChange={setSelectedDate} value={selectedDate} />
+            <p>Selected Date: {selectedDate.toDateString()}</p>
+          </div>
+
           <div className="form-group">
             <select id="time" value={time} onChange={(e) => setTime(e.target.value)} required>
               <option value="" disabled>Select a time</option>
@@ -72,12 +78,6 @@ function BookingDashboard() {
 
           <button type="submit" className="save-button">Save</button>
         </form>
-
-        <div className="calendar-section">
-          <h3>Select Date</h3>
-          <Calendar onChange={setSelectedDate} value={selectedDate} />
-          <p>Selected Date: {selectedDate.toDateString()}</p>
-        </div>
       </div>
     </div>
   );
