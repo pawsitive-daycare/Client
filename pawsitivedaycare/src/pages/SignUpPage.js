@@ -28,7 +28,7 @@ function SignUpPage() {
       <div className="sign-up-form-container">
         <h1 className="form-title">sign up</h1>
         <p className="form-subtitle">
-          already have an account? <a href="Log In">Login here</a>
+          already have an account? <a href="/LogIn">Login here</a>
         </p>
         <form className="sign-up-form" onSubmit={handleSignUp}>
           <form className="sign-up-form">
