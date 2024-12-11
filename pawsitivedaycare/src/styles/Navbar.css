@@ -109,20 +109,22 @@
   }
   
   @media (max-width: 500px) {
-    .nav-links {
+    .nav-content {
       display: none;
+    }
+
+    .nav-links {
+      display: flex;
       flex-direction: column;
       position: absolute;
       top: 60px;
       right: 20px;
-      background: #2a2a72;
+      background: #3b5998;
       padding: 10px;
+      z-index: 1000; 
+      border-radius: 10px;
     }
-  
-    .nav-links.open {
-      display: flex;
-    }
-  
+      
     .hamburger-menu {
       display: block;
       font-size: 1.5em;
@@ -137,7 +139,7 @@
       line-height: 1;
     }
 
-    .nav-content.nav-links.open {
-      display: flex;
+    .nav-content.open {
+      display: block;
     }
   }

@@ -25,7 +25,7 @@ function Navbar() {
                     </span>
                 </Link>
             </a>
-            
+
             <nav className={`nav-content ${menuOpen ? "open" : ""}`}>
                 <ul className="nav-links">
                     <li><Link to="/Home" onClick={toggleMenu}>Home</Link></li>
@@ -34,18 +34,21 @@ function Navbar() {
                     <li><Link to="/AboutUs" onClick={toggleMenu}>About Us</Link></li>
 
                     <li><Link to="/MainDashboard">Main Dashboard</Link></li>
-                </ul>
-                    <Link to="Log In">
-                        <button className="login-btn">
-                            <span className="login-text">Log In</span>
-                        </button>
-                    </Link>
-                    <Link to="Sign Up">
-                        <button className="signup-btn">
-                            <span className="signup-text">Sign Up</span>
-                        </button>
-                    </Link>
+                </ul>   
             </nav>
+
+            <div className="action-btn">
+                <Link to="Log In">
+                    <button className="login-btn">
+                        <span className="login-text">Log In</span>
+                    </button>
+                </Link>
+                <Link to="Sign Up">
+                    <button className="signup-btn">
+                        <span className="signup-text">Sign Up</span>
+                    </button>
+                </Link>
+            </div>
             <button className="hamburger-menu" onClick={toggleMenu}>
                 {menuOpen ? "✖" : "☰"}
             </button>
