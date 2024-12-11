@@ -143,3 +143,13 @@
       display: block;
     }
   }
+
+  @media (max-width: 375px) {
+    .login-btn {
+      font-size: 0.8rem;
+    }
+
+    .signup-btn {
+      font-size: 0.8rem;
+    }
+  }
