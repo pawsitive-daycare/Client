@@ -38,12 +38,12 @@ function Navbar() {
             </nav>
 
             <div className="action-btn">
-                <Link to="Log In">
+                <Link to="/LogIn">
                     <button className="login-btn">
                         <span className="login-text">Log In</span>
                     </button>
                 </Link>
-                <Link to="Sign Up">
+                <Link to="/SignUp">
                     <button className="signup-btn">
                         <span className="signup-text">Sign Up</span>
                     </button>
