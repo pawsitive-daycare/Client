@@ -19,14 +19,14 @@ function App() {
             <Navbar />
             <main className="content">
             <Routes>
-                <Route path="Home" element={<LandingPage />} />
-                <Route path="Services" element={ <ServicesPage />} />  
-                <Route path="Contact Us" element={ <ContactPage />} />  
-                <Route path="About Us" element={ <AboutPage />} />
-                <Route path="Log In" element={ <LoginPage />} />
-                <Route path="Sign Up" element={ <SignUpPage />} />
-                <Route path="Main Dashboard" element={ <MainDashboard />} />
-                <Route path="Booking Dashboard" element={ <BookingDashboard />} />
+                <Route path="/Home" element={<LandingPage />} />
+                <Route path="/Services" element={ <ServicesPage />} />  
+                <Route path="/ContactUs" element={ <ContactPage />} />  
+                <Route path="/AboutUs" element={ <AboutPage />} />
+                <Route path="/LogIn" element={ <LoginPage />} />
+                <Route path="/SignUp" element={ <SignUpPage />} />
+                <Route path="/MainDashboard" element={ <MainDashboard />} />
+                <Route path="/BookingDashboard" element={ <BookingDashboard />} />
             </Routes>
             </main>
             <Footer />

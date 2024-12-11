@@ -24,7 +24,7 @@ function LoginPage() {
       <div className="login-form-container">
         <h1 className="form-title">Login</h1>
         <p className="form-subtitle">
-          are you new here? <a href="Sign Up">sign up here</a>
+          are you new here? <a href="/Sign Up">sign up here</a>
         </p>
         <form className="login-form">
           <form onSubmit={handleLogin}>

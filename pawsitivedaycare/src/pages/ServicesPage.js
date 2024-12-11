@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/ServicesPage.css";
-import Rabbit from "../assets/rabbit.jpg";
-import Parrot from "../assets/parrot.jpg";
-import Hamster from "../assets/Hamster.jpg";
+import petdaycare from "../assets/petdaycare.jpg"
+import petgrooming from "../assets/petgrooming.png"
+import dogwalking from "../assets/dogwalking.jpg"
 import { Link } from "react-router-dom";
 
 const ServicesPage = ({ icon, title, description }) => {
@@ -24,7 +24,7 @@ const ServicesPage = ({ icon, title, description }) => {
           <div className="services-content"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            <img src={Rabbit} alt="Small Animal" className="service-image" />
+            <img src={petdaycare} alt="pet daycare" className="service-image" />
             <h3 className="services-pricing">Prices</h3>
             {isHovered && <p className="services-description">Keep your pet happy and healthy with play dates, exercise, and playful games, all supervised by our expert PAWsitive team</p>}
           </div>
@@ -35,7 +35,7 @@ const ServicesPage = ({ icon, title, description }) => {
           <div className="services-content"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            <img src={Parrot} alt="Small Animal" className="service-image" />
+            <img src={petgrooming} alt="pet grooming" className="service-image" />
             <h3 className="services-pricing">Prices</h3>
             {isHovered && <p className="services-description">We also offer grooming services so your pets can enjoy a bath, clip, and tidy, leaving them clean and looking their best!</p>}
           </div>
@@ -46,7 +46,7 @@ const ServicesPage = ({ icon, title, description }) => {
           <div className="services-content"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            <img src={Hamster} alt="Small Animal" className="service-image" />
+            <img src={dogwalking} alt="dog walking" className="service-image" />
             <h3 className="services-pricing">Prices</h3>
             {isHovered && <p className="services-description">We provide professional dog walking services to keep your furry friend active, happy, and well-exercised, no matter how busy your day gets!</p>}
           </div>
@@ -55,7 +55,7 @@ const ServicesPage = ({ icon, title, description }) => {
 
       {/* Call to Action */}
       <div className="cta-section">
-        <Link to="Booking Dashboard">
+        <Link to="/BookingDashboard">
           <button className="cta-button">Book Now!</button>
         </Link>
       </div>

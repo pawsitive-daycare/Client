@@ -15,26 +15,25 @@ function Navbar() {
         <header className="navbar">
             <a href="#home" className="logo">
                 <Link to="Home">
-                <img src={logo} alt="PAWsitive Daycare Logo"/>
+                    <img src={logo} alt="PAWsitive Daycare Logo"/>
                 </Link>
                 <Link to="Home">
-                <span className="brand-name">
-                    <strong>PAWsitive</strong>
-                    <br />
-                    Daycare
-                </span>
+                    <span className="brand-name">
+                        <strong>PAWsitive</strong>
+                        <br />
+                        Daycare
+                    </span>
                 </Link>
             </a>
             
-            <nav className={`nav-content ${menuOpen ? "mobile" : ""}`}>
+            <nav className={`nav-content ${menuOpen ? "open" : ""}`}>
                 <ul className="nav-links">
-                    <li><Link to="Home">Home</Link></li>
-                    <li><Link to="Services">Services</Link></li>
-                    <li><Link to="Contact Us">Contact Us</Link></li>
-                    <li><Link to="About Us">About Us</Link></li>
+                    <li><Link to="/Home" onClick={toggleMenu}>Home</Link></li>
+                    <li><Link to="/Services" onClick={toggleMenu}>Services</Link></li>
+                    <li><Link to="/ContactUs" onClick={toggleMenu}>Contact Us</Link></li>
+                    <li><Link to="/AboutUs" onClick={toggleMenu}>About Us</Link></li>
 
-                    <li><Link to="Main Dashboard">Main Dashboard</Link></li>
-                    <li><Link to="Booking Dashboard">Booking Dashboard</Link></li>
+                    <li><Link to="/MainDashboard">Main Dashboard</Link></li>
                 </ul>
                     <Link to="Log In">
                         <button className="login-btn">
@@ -46,7 +45,6 @@ function Navbar() {
                             <span className="signup-text">Sign Up</span>
                         </button>
                     </Link>
-                    
             </nav>
             <button className="hamburger-menu" onClick={toggleMenu}>
                 {menuOpen ? "✖" : "☰"}

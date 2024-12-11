@@ -3,6 +3,7 @@ import "../styles/LandingPage.css"
 import PetDaycare from "../assets/Pet Daycare.jpg";
 import PetGrooming from "../assets/Pet Grooming.jpg";
 import DogWalking from "../assets/Dog Walking.jpg";
+import { Link } from "react-router-dom";
 
 // Hero Component
 function Hero() {
@@ -43,12 +44,14 @@ function Services() {
           </div>
         ))}
       </div>
-      <button className="learn-more-button">Learn More</button>
+      <Link to="/Services">
+        <button className="learn-more-button">Learn More</button>
+      </Link>
     </section>
   );
 }
 
-// LandingPage Component
+// LandingPage Component //
 function LandingPage() {
   return (
     <div>
