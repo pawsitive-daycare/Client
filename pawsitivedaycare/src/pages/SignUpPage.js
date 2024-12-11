@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/SignUpPage.css";
+import axios from "axios";
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -11,8 +12,11 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignUp = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
+    axios.post ("http://localhost:8080/users/signup", {email, firstName, lastName, phoneNumber, password})
+    .then(result => console.log(result))
+    .catch(error => console.log(error))
 
     if (email && firstName && lastName && phoneNumber && password) {
       try {
@@ -33,7 +37,6 @@ function SignUpPage() {
     } else {
       alert("Please fill in all the fields.");
     }
-  };
   
   return (
     <div className="sign-up-page">
