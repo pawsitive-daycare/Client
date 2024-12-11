@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/SignUpPage.css";
 
 function SignUpPage() {
@@ -10,14 +11,25 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
-    // Mock sign-up logic (replace with API call in production)
     if (email && firstName && lastName && phoneNumber && password) {
-      // Redirect to Dashboard after successful sign-up
+      try {
+        const response = await axios.post("http://localhost:8080", {
+          email,
+          firstName,
+          lastName,
+          phoneNumber,
+          password,
+        });
+        console.log("Sign-Up Sucessful:", response.data);
       alert("Sign-Up Successful");
-      navigate("Main Dashboard");
+      navigate("/MainDashboard");
+    } catch (error) {
+      console.error("Error signing up:", error);
+      alert("Error signing up. Please try again.");
+    }
     } else {
       alert("Please fill in all the fields.");
     }
@@ -38,19 +50,43 @@ function SignUpPage() {
             </div>
             <div className="form-group">
               <label htmlFor="first-name">First name:</label>
-              <input type="text" id="first-name" placeholder="Enter your first name" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+              <input 
+              type="text" 
+              id="first-name" 
+              placeholder="Enter your first name" 
+              value={firstName} 
+              onChange={(e) => setFirstName(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="last-name">Last name:</label>
-              <input type="text" id="last-name" placeholder="Enter your last name" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+              <input 
+              type="text" 
+              id="last-name" 
+              placeholder="Enter your last name" 
+              value={lastName} 
+              onChange={(e) => setLastName(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone number:</label>
-              <input type="number" id="phone-number" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+              <input 
+              type="tel" 
+              id="phone-number" 
+              placeholder="Enter your phone number" 
+              value={phoneNumber} 
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+              <input 
+              type="password" 
+              id="password" 
+              placeholder="Enter your password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <button type="submit" className="submit-button">Submit</button>
           </form>
