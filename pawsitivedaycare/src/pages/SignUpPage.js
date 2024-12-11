@@ -25,10 +25,10 @@ function SignUpPage() {
   // };
 const handleSignUp = (e) => {
     e.preventDefault();
-    axios.post ("http://localhost:8080", {email, firstName, lastName, phoneNumber, password})
+    axios.post ("http://localhost:8080/users/signup", {email, firstName, lastName, phoneNumber, password})
     .then(result => console.log(result))
     .catch(error => console.log(error))
-    
+
     if (email && firstName && lastName && phoneNumber && password) {
       // Redirect to Dashboard after successful sign-up
       alert("Sign-Up Successful");
