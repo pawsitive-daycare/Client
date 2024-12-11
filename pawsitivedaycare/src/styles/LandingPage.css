@@ -128,7 +128,7 @@
     transform: scale(1.05);
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 450px) {
   .hero-content {
     width: 70%; /* Shrink the box width */
     padding: 3px; /* Reduce padding inside the box */

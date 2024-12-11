@@ -57,7 +57,7 @@
     margin-top: 15px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 450px) {
     .sign-up-form {
       display: flex;
       justify-content: center;

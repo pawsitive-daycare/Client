@@ -51,7 +51,7 @@
     font-size: xx-large;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 450px) {
     .dashboard-header {
       font-size: 1.2rem;
       padding: 10px;
