@@ -32,4 +32,4 @@ const signUp = async (userData) => {
   }
 };
 
-expo
+export { login, signUp, fetchURL };

@@ -1,44 +1,12 @@
 import React, { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/SignUpPage.css";
-import { signUp } from "../api";
+import { fetchURL, signUp } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { useEffect } from "react";
 import { Link} from "react-router-dom";
 
-// function SignUpPage() {
-//   const [email, setEmail] = useState("");
-//   const [firstName, setFirstName] = useState("");
-//   const [lastName, setLastName] = useState("");
-//   const [phoneNumber, setPhoneNumber] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
 
-//   const handleSignUp = async (e) => {
-//     e.preventDefault();
-
-//     const userData = {
-//       email,
-//       firstName,
-//       lastName,
-//       phoneNumber,
-//       password,
-//     };
-
-//     if (email && firstName && lastName && phoneNumber && password) {
-//       try {
-//         const response = await signUp(userData);
-//         console.log("Sign-Up Sucessful:", response);
-//       alert("Sign-Up Successful");
-//       navigate("/LoginPage");
-//     } catch (error) {
-//       console.error("Error signing up:", error);
-//       alert("Error signing up. Please try again.");
-//     }
-//     } else {
-//       alert("Please fill in all the fields.");
-//     }
-//   };
 const SignUpController = () => {
   const Join = () => {
     const nav = useNavigate();
@@ -187,4 +155,4 @@ const SignUpController = () => {
   );
   };
 };
-export default SignUpPage;
+export default SignUpController;
