@@ -1,9 +1,6 @@
+const fetchURL = `https://pawsitivedaycare-app-85af86a9e0d4.herokuapp.com`;
 
-
-
-const fetchURL = `https://pawsitivedaycare-app-85af86a9e0d4.herokuapp.com`
-
-export const login = async (email, password) => {
+const login = async (email, password) => {
   try {
     const response = await fetch(`${fetchURL}/login`, {
       method: "POST",
@@ -19,7 +16,7 @@ export const login = async (email, password) => {
   }
 };
 
-export const signUp = async (userData) => {
+const signUp = async (userData) => {
   try {
     const response = await fetch(`${fetchURL}/signup`, {
       method: "POST",
@@ -34,3 +31,5 @@ export const signUp = async (userData) => {
     throw error;
   }
 };
+
+expo
