@@ -11,10 +11,12 @@ import LoginPage from "./pages/LoginPage";
 import MainDashboard from "./pages/MainDashboard";
 import BookingDashboard from "./pages/BookingDashboard";
 import "./App.css";
+import { UserContextProvider } from "./components/UserContext";
 
 function App() {
+
     return (
-        <Router>
+        <UserContextProvider>
         <div className="page-container">
             <Navbar />
             <main className="content">
@@ -31,7 +33,7 @@ function App() {
             </main>
             <Footer />
         </div>
-        </Router>
+        </UserContextProvider>
     );
 }
 
