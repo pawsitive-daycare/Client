@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../styles/SignUpPage.css";
+import { signUp } from "../api";
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -14,16 +14,18 @@ function SignUpPage() {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
+    const userData = {
+      email,
+      firstName,
+      lastName,
+      phoneNumber,
+      password,
+    };
+
     if (email && firstName && lastName && phoneNumber && password) {
       try {
-        const response = await axios.post("http://localhost:8080", {
-          email,
-          firstName,
-          lastName,
-          phoneNumber,
-          password,
-        });
-        console.log("Sign-Up Sucessful:", response.data);
+        const response = await signUp(userData);
+        console.log("Sign-Up Sucessful:", response);
       alert("Sign-Up Successful");
       navigate("/MainDashboard");
     } catch (error) {
@@ -34,6 +36,8 @@ function SignUpPage() {
       alert("Please fill in all the fields.");
     }
   };
+
+
   
   return (
     <div className="sign-up-page">
