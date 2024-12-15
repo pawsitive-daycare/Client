@@ -29,6 +29,8 @@ function App() {
                         <Route path="/SignUp" element={ <JoinController />} />
                         <Route path="/MainDashboard" element={ <MainDashboard />} />
                         <Route path="/BookingDashboard" element={ <BookingDashboard />} />
+
+                        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
                     </Routes>
                     </main>
                     <Footer />
