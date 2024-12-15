@@ -10,28 +10,30 @@ import MainDashboard from "./pages/MainDashboard";
 import BookingDashboard from "./pages/BookingDashboard";
 import "./App.css";
 import { UserContextProvider } from "./components/UserContext";
-import Joincontroller from "./pages/SignUpPage"
+import JoinController from "./pages/SignUpPage"
 import LoginController from "./pages/LoginPage";
-function App() {
 
+function App() {
     return (
         <UserContextProvider>
-        <div className="page-container">
-            <Navbar />
-            <main className="content">
-            <Routes>
-                <Route path="/Home" element={<LandingPage />} />
-                <Route path="/Services" element={ <ServicesPage />} />  
-                <Route path="/ContactUs" element={ <ContactPage />} />  
-                <Route path="/AboutUs" element={ <AboutPage />} />
-                <Route path="/LogIn" element={ <LoginController />} />
-                <Route path="/SignUp" element={ <Joincontroller />} />
-                <Route path="/MainDashboard" element={ <MainDashboard />} />
-                <Route path="/BookingDashboard" element={ <BookingDashboard />} />
-            </Routes>
-            </main>
-            <Footer />
-        </div>
+            <Router>
+                <div className="page-container">
+                    <Navbar />
+                    <main className="content">
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/Services" element={ <ServicesPage />} />  
+                        <Route path="/ContactUs" element={ <ContactPage />} />  
+                        <Route path="/AboutUs" element={ <AboutPage />} />
+                        <Route path="/LogIn" element={ <LoginController />} />
+                        <Route path="/SignUp" element={ <JoinController />} />
+                        <Route path="/MainDashboard" element={ <MainDashboard />} />
+                        <Route path="/BookingDashboard" element={ <BookingDashboard />} />
+                    </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </Router>
         </UserContextProvider>
     );
 }

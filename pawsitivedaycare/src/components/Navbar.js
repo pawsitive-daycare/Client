@@ -14,10 +14,10 @@ function Navbar() {
     return (
         <header className="navbar">
             <a href="#home" className="logo">
-                <Link to="Home">
+                <Link to="/">
                     <img src={logo} alt="PAWsitive Daycare Logo"/>
                 </Link>
-                <Link to="Home">
+                <Link to="/">
                     <span className="brand-name">
                         <strong>PAWsitive</strong>
                         <br />
@@ -28,7 +28,7 @@ function Navbar() {
 
             <nav className={`nav-content ${menuOpen ? "open" : ""}`}>
                 <ul className="nav-links">
-                    <li><Link to="/Home" onClick={toggleMenu}>Home</Link></li>
+                    <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
                     <li><Link to="/Services" onClick={toggleMenu}>Services</Link></li>
                     <li><Link to="/ContactUs" onClick={toggleMenu}>Contact Us</Link></li>
                     <li><Link to="/AboutUs" onClick={toggleMenu}>About Us</Link></li>

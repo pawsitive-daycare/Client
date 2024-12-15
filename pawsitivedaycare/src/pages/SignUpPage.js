@@ -1,17 +1,13 @@
-import React, { use, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/SignUpPage.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
-import { useEffect } from "react";
-import { Link} from "react-router-dom";
 
 
 const SignUpController = () => {
-  const Join = () => {
     const nav = useNavigate();
-    const { user, setUser } = useUserContext();
-    const [usersList, setUsersList] = useState([]);
+    const { setUser } = useUserContext();
     const [form, setForm] = useState({
       email: "",
       firstName: "",
@@ -19,7 +15,6 @@ const SignUpController = () => {
       phoneNumber: "",
       password: "",
     });
-    const [email, firstName, lastName, phoneNumber, password] = form;
 
     const handleForm = (e) => {
       const { name, value } = e.target;
@@ -27,69 +22,76 @@ const SignUpController = () => {
     };
 
     useEffect(() => {
-      console.log("Join page renders");
+      console.log("SignUp page renders");
     }, []);
 
-    const addUserDetails = async (
-      email,
-      firstName,
-      lastName,
-      phoneNumber,
-      password
-    ) => {
-      const newUser = {
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        password: password,
+    const addUserDetails = async (email, firstName, lastName, phoneNumber, password) => {
+      const newUser ={
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+        password,
       };
-      const returnedUser = await fetch(`${fetchURL}/signup`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+     
+
+      try {
+        const returnedUser = await fetch(`${fetchURL}/signup`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(newUser),
       });
+      
+
       const data = await returnedUser.json();
       console.log(data);
       console.log("Attempting to register in DB");
-      if (data.code == 201) {
+
+      if (data.code === 201) {
         setUser({
           _id: data.user_id,
           email: data.email,
           firstName: data.firstName,
           tk: data.token
-  });
-  alert("Thanks for registering!");
-            return nav("/LoginPage");
-        }
+        });
+        alert("Thanks for registering!");
+        nav("/LogIn");
+      } else {
+        alert(data.message);
       }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
     
  
-  const submit = async (evt) => {
+  const handleSignUp = async (evt) => {
     evt.preventDefault()
-    console.log("Checking the form valid")
-    if (!form.email || !form.password || !form.first_name || !form.last_name) {
-      return alert('Please enter the required fields')
+    console.log("Checking the form valid");
+
+    if (!form.email || !form.password || !form.firstName || !form.lastName) {
+      return alert('Please enter the required fields');
     } else {
-      console.log("Creating new user", form)
-      await addUserDetail( 
+      console.log("Creating new user", form);
+      await addUserDetails( 
         form.email,  
-        form.first_name, 
-        form.last_name, 
-        form.phone_number, 
-        form.password )
+        form.firstName, 
+        form.lastName, 
+        form.phoneNumber, 
+        form.password 
+      );
     }
-  }
+  };
 
   return (
     <div className="sign-up-page">
       <div className="sign-up-form-container">
         <h1 className="form-title">sign up</h1>
         <p className="form-subtitle">
-          already have an account? <a href="/LogIn">Login here</a>
+          already have an account? <Link to="/LogIn">Login here</Link>
         </p>
         <form className="sign-up-form" onSubmit={handleSignUp}>
           <form className="sign-up-form">
@@ -99,7 +101,7 @@ const SignUpController = () => {
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                value={email}
+                value={form.email}
                 onChange={handleForm}
               />
             </div>
@@ -109,7 +111,7 @@ const SignUpController = () => {
                 type="text"
                 id="first-name"
                 placeholder="Enter your first name"
-                value={firstName}
+                value={form.firstName}
                 onChange={handleForm}
               />
             </div>
@@ -119,7 +121,7 @@ const SignUpController = () => {
                 type="text"
                 id="last-name"
                 placeholder="Enter your last name"
-                value={lastName}
+                value={form.lastName}
                 onChange={handleForm}
               />
             </div>
@@ -129,7 +131,7 @@ const SignUpController = () => {
                 type="tel"
                 id="phone-number"
                 placeholder="Enter your phone number"
-                value={phoneNumber}
+                value={form.phoneNumber}
                 onChange={handleForm}
               />
             </div>
@@ -139,20 +141,15 @@ const SignUpController = () => {
                 type="password"
                 id="password"
                 placeholder="Enter your password"
-                value={password}
+                value={form.password}
                 onChange={handleForm}
               />
             </div>
-            <Link name="submit" onClick={submit} className="submit-button">
-            {<div type="submit" className="submit-button">
-              <p>Submit</p>
-            </div>}
-            </Link>
+            <button type="submit" className="submit-button">Submit</button>
           </form>
         </form>
       </div>
     </div>
   );
   };
-};
 export default SignUpController;

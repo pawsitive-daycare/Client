@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 
 const UserContext = createContext(null);
@@ -7,8 +7,9 @@ function UserContextProvider({ children }) {
   const {user, setUser} = useState(undefined)
 
     return (
-        <UserContext.Provider value={{ user, setUser }}/>
-            
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
     );
 }
 
