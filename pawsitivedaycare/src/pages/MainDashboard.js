@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
@@ -10,7 +10,9 @@ const Dashboard = () => {
   const nav = useNavigate();
 
   // Fetch bookings function
-  async function fetchBookings() {
+  const fetchBookings = useCallback(async () => {
+    if (!user) return;
+
     try {
       const returnedBookings = await fetch(`${fetchURL}/bookings/${user._id}`, {
         method: "GET",
@@ -28,9 +30,10 @@ const Dashboard = () => {
       const data = await returnedBookings.json();
       setBookings(data.bookings);
     } catch (error) {
-      console.log(error.message);
+      console.log("Error fetching bookings:", error.message);
     }
-  }
+  }, [user]);
+
 
   useEffect(() => {
     if (!user) {
@@ -38,7 +41,7 @@ const Dashboard = () => {
     } else {
       fetchBookings();
     }
-  }, [user, nav]);
+  }, [user, nav, fetchBookings]);
 
   // BookingCard component
   const BookingCard = ({ booking }) => {
@@ -46,6 +49,7 @@ const Dashboard = () => {
       let i = Number(str);
       let j = i % 10,
         k = i % 100;
+      
       if (j === 1 && k !== 11) return i + "st";
       if (j === 2 && k !== 12) return i + "nd";
       if (j === 3 && k !== 13) return i + "rd";
@@ -97,7 +101,18 @@ const Dashboard = () => {
       <h2>Your Bookings</h2>
       <div className="bookings-list">
         {bookings.length > 0 ? (
-          bookings.map((booking) => <BookingCard key={booking._id} booking={booking} />)
+          bookings.map((booking) => {
+            const day = new Date(booking.date).getDate();
+
+            return (
+              <div key={booking._id} className="booking-card">
+                <h3>{booking.service}</h3>
+                <p>Date: {nthNumber(day)} of {new Date(booking.date).toLocaleString('default', { month: 'long' })}</p>
+                <p>Time: {booking.time}</p>
+                <p>Price: ${booking.price}</p>
+              </div>
+            );
+          })
         ) : (
           <p>No bookings found.</p>
         )}
