@@ -21,9 +21,13 @@ function LandingPage() {
           <h1>Welcome to PAWsitive Daycare</h1>
           <p>A PAWsitive Perfect Getaway For Your Furry Friend!</p>
           <div className="hero-buttons">
-            <button>Book Now</button>
-            <button>Send Inquiry</button>
-          </div>
+            <Link to="/BookingDashboard">
+              <button>Book Now</button>
+            </Link>
+            <Link to="/ContactUs">
+              <button>Send Inquiry</button>
+            </Link>
+          </div>   
         </div>
       </section>
 
