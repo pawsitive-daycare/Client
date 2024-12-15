@@ -25,7 +25,7 @@ const ServicesPage = ({ icon, title, description }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <img src={petdaycare} alt="pet daycare" className="service-image" />
-            <h3 className="services-pricing">Prices</h3>
+            <h3 className="services-pricing">$100 AUD</h3>
             {isHovered && <p className="services-description">Keep your pet happy and healthy with play dates, exercise, and playful games, all supervised by our expert PAWsitive team</p>}
           </div>
         </div>
@@ -36,7 +36,7 @@ const ServicesPage = ({ icon, title, description }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <img src={petgrooming} alt="pet grooming" className="service-image" />
-            <h3 className="services-pricing">Prices</h3>
+            <h3 className="services-pricing">$45 AUD</h3>
             {isHovered && <p className="services-description">We also offer grooming services so your pets can enjoy a bath, clip, and tidy, leaving them clean and looking their best!</p>}
           </div>
         </div>
@@ -47,7 +47,7 @@ const ServicesPage = ({ icon, title, description }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <img src={dogwalking} alt="dog walking" className="service-image" />
-            <h3 className="services-pricing">Prices</h3>
+            <h3 className="services-pricing">$35 AUD</h3>
             {isHovered && <p className="services-description">We provide professional dog walking services to keep your furry friend active, happy, and well-exercised, no matter how busy your day gets!</p>}
           </div>
         </div>

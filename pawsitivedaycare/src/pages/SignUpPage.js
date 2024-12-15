@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../styles/SignUpPage.css";
+import "../styles/SignUpPage.css"
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 
@@ -100,6 +100,7 @@ const SignUpController = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Enter your email"
                 value={form.email}
                 onChange={handleForm}
@@ -110,6 +111,7 @@ const SignUpController = () => {
               <input
                 type="text"
                 id="first-name"
+                name="firstName"
                 placeholder="Enter your first name"
                 value={form.firstName}
                 onChange={handleForm}
@@ -120,6 +122,7 @@ const SignUpController = () => {
               <input
                 type="text"
                 id="last-name"
+                name="lastName"
                 placeholder="Enter your last name"
                 value={form.lastName}
                 onChange={handleForm}
@@ -130,6 +133,7 @@ const SignUpController = () => {
               <input
                 type="tel"
                 id="phone-number"
+                name="phoneNumber"
                 placeholder="Enter your phone number"
                 value={form.phoneNumber}
                 onChange={handleForm}
@@ -140,6 +144,7 @@ const SignUpController = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 value={form.password}
                 onChange={handleForm}
