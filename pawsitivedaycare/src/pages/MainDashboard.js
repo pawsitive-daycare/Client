@@ -56,6 +56,15 @@ const Dashboard = () => {
       return i + "th";
     };
 
+    // Format the booking date
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      const day = nthNumber(date.getDate());
+      const month = date.toLocaleString("default", { month: "long" });
+      const year = date.getFullYear();
+      return `${day} of ${month}, ${year}`;
+    };
+
     const addBookingToUserContext = () => {
       setUser({ ...user, booking });
       console.log(booking, user, "Booking to modify added on user");
@@ -86,7 +95,7 @@ const Dashboard = () => {
     return (
       <div className="booking-card">
         <h3>Service: {booking.service}</h3>
-        <p>Date: {booking.date}</p>
+        <p>Date: {formatDate(booking.date)}</p>
         <p>Time: {booking.time}</p>
         <p>Price: ${booking.price}</p>
         <button onClick={addBookingToUserContext}>Modify Booking</button>
@@ -101,18 +110,7 @@ const Dashboard = () => {
       <h2>Your Bookings</h2>
       <div className="bookings-list">
         {bookings.length > 0 ? (
-          bookings.map((booking) => {
-            const day = new Date(booking.date).getDate();
-
-            return (
-              <div key={booking._id} className="booking-card">
-                <h3>{booking.service}</h3>
-                <p>Date: {nthNumber(day)} of {new Date(booking.date).toLocaleString('default', { month: 'long' })}</p>
-                <p>Time: {booking.time}</p>
-                <p>Price: ${booking.price}</p>
-              </div>
-            );
-          })
+          bookings.map((booking) => <BookingCard key={booking._id} booking={booking} />)
         ) : (
           <p>No bookings found.</p>
         )}
