@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import LandingPage from "../pages/LandingPage";
-import Footer from "./Footer";
-import ContactPage from "../pages/ContactPage";
-import ServicesPage from "../pages/ServicesPage";
-import AboutPage from "../pages/AboutPage";
-import MainDashboard from "../pages/MainDashboard";
-import BookingDashboard from "../pages/BookingDashboard";
+import Navbar from "./components/Navbar";
+import LandingPage from "./pages/LandingPage";
+import Footer from "./components/Footer";
+import ContactPage from "./pages/ContactPage";
+import ServicesPage from "./pages/ServicesPage";
+import AboutPage from "./pages/AboutPage";
+import MainDashboard from "./pages/MainDashboard";
+import BookingDashboard from "./pages/BookingDashboard";
 import "./App.css";
-import { UserContextProvider } from "./UserContext";
-import Joincontroller from "../pages/SignUpPage"
-import LoginController from "../pages/LoginPage";
+import { UserContextProvider } from "./components/UserContext";
+import Joincontroller from "./pages/SignUpPage"
+import LoginController from "./pages/LoginPage";
 function App() {
 
     return (

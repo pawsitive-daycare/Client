@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginInPage.css";
+import { fetchURL } from "../components/api";
 
-// function LoginPage() {
 
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const navigate = useNavigate();
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-
-//     // Mock validation (Replace with actual API validation)
-//     if (email === "user@example.com" && password === "password") {
-//       navigate("Main Dashboard"); // Redirect to Dashboard
-//     } else {
-//       alert("Invalid login credentials.");
-//     }
-//   };
 const LoginController = () => {
   const { user, setUser } = useUserContext()
   const [ form, setForm ] = useState({

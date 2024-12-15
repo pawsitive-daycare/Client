@@ -1,7 +1,7 @@
 import React, { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/SignUpPage.css";
-import { fetchURL, signUp } from "../components/api";
+import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { useEffect } from "react";
 import { Link} from "react-router-dom";

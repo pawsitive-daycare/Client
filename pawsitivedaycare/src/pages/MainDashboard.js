@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
+import { useNavigate } from "react-router-dom";
 
 // function Dashboard() {
 //   return (
@@ -117,12 +118,36 @@ const Dashboard = () => {
               fetchBookings()
             } else {
               return true
-            }
-          })
-          
-        }
-      }
-    }
+            } }) 
+           }
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 

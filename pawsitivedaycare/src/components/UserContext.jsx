@@ -19,3 +19,5 @@ function useUserContext() {
     }
     return UserContext;
 }
+
+export { UserContextProvider, useUserContext };
