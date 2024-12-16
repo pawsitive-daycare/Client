@@ -32,7 +32,7 @@ const LoginController = () => {
     }
 
     try {
-      const returnedUser = await fetch(`${fetchURL}/login`, {
+      const returnedUser = await fetch(fetchURL + '/users/login', {
         method: "POST",
         headers: {
           Accept: "application/json",
