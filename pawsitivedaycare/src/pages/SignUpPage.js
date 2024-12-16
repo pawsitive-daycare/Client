@@ -35,7 +35,7 @@ const SignUpController = () => {
     };
 
     try {
-      const returnedUser = await fetch(fetchURL + '/users/register', {
+      const returnedUser = await fetch(fetchURL + '/users/signup', {
         method: "POST",
         headers: {
           Accept: "application/json",
