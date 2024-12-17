@@ -59,9 +59,10 @@ const SignUpController = () => {
         nav("/LogIn");
       } else {
         alert(data.message);
+        console.error("setUser is not a function");
       }
     } catch (error) {
-      console.log(JSON.stringify(error));
+      
       console.log("Error during sign-up:", error.message);
       alert("An error occurred. Please try again.");
     }
