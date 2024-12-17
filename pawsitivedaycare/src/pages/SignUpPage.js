@@ -21,7 +21,7 @@ const SignUpPage = () => {
       [name]: value,
     }))};
 
-    handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
 
       const { email, firstName, lastName, phoneNumber, password } = userData;
@@ -50,6 +50,7 @@ const SignUpPage = () => {
     }
 
   return (
+
     <div className="sign-up-page">
       <div className="sign-up-form-container">
         <h1 className="form-title">Sign Up</h1>
