@@ -11,8 +11,9 @@ import BookingDashboard from "./pages/BookingDashboard";
 import UpdateBooking from "./pages/UpdateBooking";
 import "./App.css";
 import { UserContextProvider } from "./components/UserContext";
-import JoinController from "./pages/SignUpPage"
+// import JoinController from "./pages/SignUpPage"
 import LoginController from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
     return (
@@ -27,7 +28,7 @@ function App() {
                         <Route path="/ContactUs" element={ <ContactPage />} />  
                         <Route path="/AboutUs" element={ <AboutPage />} />
                         <Route path="/Login" element={ <LoginController />} />
-                        <Route path="/SignUp" element={ <JoinController />} />
+                        <Route path="/SignUp" element={ <SignUpPage />} />
                         <Route path="/MainDashboard" element={ <MainDashboard />} />
                         <Route path="/BookingDashboard" element={ <BookingDashboard />} />
                         <Route path="/update-booking/:bookingId" element={ <UpdateBooking />} />
