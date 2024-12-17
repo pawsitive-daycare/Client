@@ -61,6 +61,7 @@ const SignUpController = () => {
         alert(data.message);
       }
     } catch (error) {
+      console.log(JSON.stringify(err));
       console.log("Error during sign-up:", error.message);
       alert("An error occurred. Please try again.");
     }
