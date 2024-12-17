@@ -4,7 +4,7 @@ import { createContext, useState, useContext } from "react";
 export const UserContext = createContext(null);
 
 function UserContextProvider({ children }) {
-  const {user, setUser} = useState(undefined)
+  const [user, setUser] = useState(null);
 
   const addBookingToUserContext = (booking) => {
     setUser({ ...user, booking });
