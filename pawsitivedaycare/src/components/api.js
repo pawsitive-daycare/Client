@@ -23,7 +23,6 @@ const createUser = async (userData) => {
   };
 
 const loginUser = async (loginFormData) => {
-    
     try {
       const response = await fetch(`${fetchURL}/users/login`, {
         method: "POST",
@@ -40,8 +39,10 @@ const loginUser = async (loginFormData) => {
       }
   
       return data;
+    } catch (error) {
+      throw new Error(error.message);
     }
 }
 
 
-export { fetchURL };
+export { fetchURL, createUser, loginUser };
