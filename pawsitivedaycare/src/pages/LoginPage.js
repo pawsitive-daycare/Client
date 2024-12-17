@@ -1,59 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useUserContext } from "../components/UserContext";
-import { fetchURL } from "../components/api";
 import "../styles/LogInPage.css";
 
-const LoginController = () => {
-  const { user, setUser } = useUserContext()
-  const [ form, setForm ] = useState({
+const login = () => {
+  const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
   });
-  const nav = useNavigate()
 
-  useEffect(() => {
-    if (user) {
-      nav("/MainDashboard");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try{
+      console.log("login form data", loginFormData);
+
+      await loginUser(loginFormData);
+
+      navigate("/MainDashboard");
+    } catch (error) {
+      console.log("Error logging in", error);
     }
-      console.log("LogIn page renders");
-  }, [user, nav]);
+  };
 
-  const handleForm = (e) => {
+  function handleChange(e) {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+    setLoginFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
 
-
-  const handleLogin = async (e) => {
-    e.preventDefault()
-    if (!form.email || !form.password) {
-      return alert("Please fill in all fields") 
-    }
-
-    try {
-      const returnedUser = await fetch(fetchURL + '/users/login', {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await returnedUser.json();
-
-        if (data.code === 200) {
-          setUser(data.user);
-          nav("/MainDashboard");
-        } else {
-          alert(data.message)
-        }
-    } catch (error) { 
-      console.log(error.message);
-      alert("An error occurred while logging in. Please try again.");
-    }
-  };
   
   return (
     <div className="login-page">
@@ -62,7 +40,7 @@ const LoginController = () => {
         <p className="form-subtitle">
           are you new here? <Link to="/SignUp">sign up here</Link>
         </p>
-        <form className="login-form" onSubmit={handleLogin}>
+        <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input 
@@ -70,8 +48,8 @@ const LoginController = () => {
             id="email"
             name="email"
             placeholder="Enter your email" 
-            value={form.email} 
-            onChange={handleForm} 
+            value={loginFormData.email} 
+            onChange={handleChange} 
             />
           </div>
           <div className="form-group">
@@ -81,8 +59,8 @@ const LoginController = () => {
             id="password" 
             name="password"
             placeholder="Enter your password" 
-            value={form.password} 
-            onChange={handleForm}
+            value={loginFormData.password} 
+            onChange={handleChange}
             />
           </div>
           <button type="submit" className="submit-button">Log in</button>
@@ -90,6 +68,59 @@ const LoginController = () => {
       </div>
     </div>
   );
-};
 
-export default LoginController;
+}
+export default login;
+
+
+
+// const LoginController = () => {
+//   const { user, setUser } = useUserContext()
+//   const [ form, setForm ] = useState({
+//     email: "",
+//     password: "",
+//   });
+//   const nav = useNavigate()
+
+//   useEffect(() => {
+//     if (user) {
+//       nav("/MainDashboard");
+//     }
+//       console.log("LogIn page renders");
+//   }, [user, nav]);
+
+//   const handleForm = (e) => {
+//     const { name, value } = e.target;
+//     setForm({ ...form, [name]: value });
+//   };
+
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault()
+//     if (!form.email || !form.password) {
+//       return alert("Please fill in all fields") 
+//     }
+
+//     try {
+//       const returnedUser = await fetch(fetchURL + '/users/login', {
+//         method: "POST",
+//         headers: {
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(form),
+//       });
+
+//       const data = await returnedUser.json();
+
+//         if (data.code === 200) {
+//           setUser(data.user);
+//           nav("/MainDashboard");
+//         } else {
+//           alert(data.message)
+//         }
+//     } catch (error) { 
+//       console.log(error.message);
+//       alert("An error occurred while logging in. Please try again.");
+//     }
+//   };
