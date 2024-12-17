@@ -53,7 +53,7 @@ const SignUpController = () => {
           _id: data.user_id,
           email: data.email,
           firstName: data.firstName,
-          tk: data.token,
+          // tk: data.token,
         });
         alert("Thanks for registering!");
         nav("/LogIn");
