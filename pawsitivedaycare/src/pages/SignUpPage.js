@@ -143,7 +143,7 @@ const SignUpController = () => {
               onChange={handleForm}
             />
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" onClick={handleSignUp}>
             Submit
           </button>
         </form>
