@@ -49,12 +49,13 @@ const SignUpController = () => {
       console.log("Attempting to register in DB");
 
       if (data.code === 201) {
-        setUser({
-          _id: data.user_id,
-          email: data.email,
-          firstName: data.firstName,
-          tk: data.token,
-        });
+        setUser(data.user);
+        // setUser({
+        //   _id: data.user_id,
+        //   email: data.email,
+        //   firstName: data.firstName,
+        //   tk: data.token,
+        // });
         alert("Thanks for registering!");
         nav("/LogIn");
       } else {
