@@ -44,9 +44,11 @@ const SignUpController = () => {
       });
 
       const data = await returnedUser.json()
-      .then((data) => {
-        console.log(data)
+      .then((res) => {
+        console.log(res);
         console.log("Attempting to register in DB")
+
+
         if (data.code === 201) {
           setUser({
             _id: data.user_id,
@@ -56,7 +58,7 @@ const SignUpController = () => {
             })
         alert("Thanks for registering!");
         return nav('/login');
-      } else if (res.code == 406) {
+      } else if (res.code === 406) {
         setUser(null)
       }
     })
