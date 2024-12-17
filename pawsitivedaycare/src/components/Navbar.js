@@ -33,7 +33,7 @@ function Navbar() {
                     <li><Link to="/ContactUs" onClick={toggleMenu}>Contact Us</Link></li>
                     <li><Link to="/AboutUs" onClick={toggleMenu}>About Us</Link></li>
 
-                    <li><Link to="/MainDashboard">Main Dashboard</Link></li>
+                    <li><Link to="/update-booking/" onClick={toggleMenu}>Update Booking</Link></li>
                 </ul>   
             </nav>
 
