@@ -19,9 +19,14 @@ const Login = () => {
 
       await loginUser(loginFormData);
 
-      navigate("/");
+      if (response.success) {
+        navigate("/ContactUs");
+      } else {
+        alert("Login failed. Please check your credentials and try again.");
+      }
     } catch (error) {
       console.log("Error logging in", error);
+      alert("An error occurred during login. Please try again.");
     }
   };
 
