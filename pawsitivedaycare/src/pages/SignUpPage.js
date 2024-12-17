@@ -38,7 +38,6 @@ const SignUpController = () => {
       const returnedUser = await fetch(fetchURL + '/users/signup', {
         method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newUser),
@@ -49,15 +48,14 @@ const SignUpController = () => {
       console.log("Attempting to register in DB");
 
       if (data.code === 201) {
-        setUser(data.user);
-        // setUser({
-        //   _id: data.user_id,
-        //   email: data.email,
-        //   firstName: data.firstName,
-        //   tk: data.token,
-        // });
+        setUser({
+          _id: data.user_id,
+          email: data.email,
+          firstName: data.firstName,
+          tk: data.token,
+        });
         alert("Thanks for registering!");
-        nav("/LogIn");
+        nav("/Login");
       } else {
         alert(data.message);
         console.error("setUser is not a function");

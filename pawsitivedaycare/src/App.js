@@ -26,7 +26,7 @@ function App() {
                         <Route path="/Services" element={ <ServicesPage />} />  
                         <Route path="/ContactUs" element={ <ContactPage />} />  
                         <Route path="/AboutUs" element={ <AboutPage />} />
-                        <Route path="/LogIn" element={ <LoginController />} />
+                        <Route path="/Login" element={ <LoginController />} />
                         <Route path="/SignUp" element={ <JoinController />} />
                         <Route path="/MainDashboard" element={ <MainDashboard />} />
                         <Route path="/BookingDashboard" element={ <BookingDashboard />} />
