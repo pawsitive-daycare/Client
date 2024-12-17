@@ -20,7 +20,7 @@ const Login = () => {
      await loginUser(loginFormData);
       console.log("User logged in successfully");
       
-      navigate("/AboutUs");
+      navigate("/MainDashboard");
     } catch (error) {
       console.log("Error logging in", error);
       alert("An error occurred during login. Please try again.");
