@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/LogInPage.css";
 
-const login = () => {
+const Login = () => {
   const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
@@ -70,7 +70,7 @@ const login = () => {
   );
 
 }
-export default login;
+export default Login;
 
 
 
