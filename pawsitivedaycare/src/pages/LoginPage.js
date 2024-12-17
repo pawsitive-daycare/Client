@@ -17,7 +17,7 @@ const Login = () => {
     try{
       console.log("login form data", loginFormData);
 
-      await loginUser(loginFormData);
+      const response = await loginUser(loginFormData);
 
       if (response.success) {
         navigate("/ContactUs");
