@@ -23,24 +23,16 @@ const SignUpPage = () => {
     setForm({ ...form, [name]: value });
   };
 
-  useEffect(() => {
-    console.log("SignUp page renders");
-  }, []);
+  const handleSignUp = async (e) => {
+    e.preventDefault();
 
-  const addUserDetails = async (email, firstName, lastName, phoneNumber, password) => {
-    const newUser = {
-      email,
-      firstName,
-      lastName,
-      phoneNumber,
-      password,
-    };
+    if (!form.email || !form.firstName || !form.lastName || !form.password) {
+      return alert("Please enter the required fields");
+    }
 
     try {
-      const response = await axios.post(`${fetchURL}/users/signup`, newUser);
+      const response = await axios.post(`${fetchURL}/users/signup`, form);
       const data = response.data;
-      console.log(data);
-      console.log("Attempting to register in DB");
 
       if (data.code === 201) {
         setUser({
@@ -51,30 +43,14 @@ const SignUpPage = () => {
         });
         alert("Thanks for registering!");
         navigate("/LogIn");
-      } else if (data.code === 406) {
-        setUser(null);
+      } else(data.code === 406) 
+      
         alert(`${data.message}. Please try again with another email.`);
-      } else {
-        setUser(null);
-        alert(`We're experiencing server fail. Please try again later.`);
-      }
-    } catch (error) {
+      } 
+     catch (error) {
       console.log("Error during sign-up:", error.message);
       alert("An error occurred. Please try again.");
     }
-  };
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-
-    console.log("Form Submitted", form);
-
-    if (!form.email || !form.firstName || !form.lastName || !form.password) {
-      return alert("Please enter the required fields");
-    }
-
-    console.log("Creating new user", form);
-    await addUserDetails(form.email, form.firstName, form.lastName, form.phoneNumber, form.password);
   };
 
   return (
