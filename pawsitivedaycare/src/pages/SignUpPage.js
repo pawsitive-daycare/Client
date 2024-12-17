@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/SignUpPage.css";
 import { useUserContext } from "../components/UserContext";
+import axios from "axios";
 
 const fetchURL = "https://pawsitivedaycare-backend.onrender.com";
 
