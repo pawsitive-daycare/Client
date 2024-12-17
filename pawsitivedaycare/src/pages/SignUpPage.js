@@ -40,9 +40,9 @@ const SignUpPage = () => {
           password: ""
         });
 
-        navigate("/login"), {
+        navigate("/login", {
           state: { message: "Account created successfully. Please log in." }
-        }
+        })
       } catch (error) {
         console.log(error);
         alert("An error occurred while creating your account. Please try again.");
