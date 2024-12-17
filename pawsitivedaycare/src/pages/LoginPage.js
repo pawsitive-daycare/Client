@@ -17,10 +17,10 @@ const Login = () => {
     try{
       console.log("login form data", loginFormData);
 
-      const response = await loginUser(loginFormData);
-
+     await loginUser(loginFormData);
+      console.log("User logged in successfully");
       
-        navigate("/AboutUs");
+      navigate("/AboutUs");
     } catch (error) {
       console.log("Error logging in", error);
       alert("An error occurred during login. Please try again.");
