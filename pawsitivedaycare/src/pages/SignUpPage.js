@@ -43,29 +43,33 @@ const SignUpController = () => {
         body: JSON.stringify(newUser),
       });
 
-      const data = await returnedUser.json();
-      console.log(data);
-      console.log("Attempting to register in DB");
-
-      if (data.code === 201) {
-        setUser({
-          _id: data.user_id,
-          email: data.email,
-          firstName: data.firstName,
-          tk: data.token,
-        });
+      const data = await returnedUser.json()
+      .then((res) => {
+        console.log(res)
+        console.log("Attempting to register in DB")
+        if (res.code == 201) {
+          setUser({
+            _id: res.user_id,
+            email: res.email,
+            firstName: res.firstName,
+            tk: res.token
+            })
         alert("Thanks for registering!");
-        nav("/Login");
-      } else {
-        alert(data.message);
-        console.error("setUser is not a function");
+        return nav('/login');
+      } else if (res.code == 406) {
+        setUser(null)
       }
-    } catch (error) {
-      
+    })
+      .catch(err => {
+        setUser(null)
       console.log("Error during sign-up:", error.message);
-      alert("An error occurred. Please try again.");
-    }
-  };
+      alert(`We're experiencing server fail. Please try again later.`)
+    })
+  } catch (err) {
+    setUser(null)
+    alert(`We're experiencing server fail. Please try again later.`)
+          return
+      }}
 
   const handleSignUp = async (e) => {
     e.preventDefault();
