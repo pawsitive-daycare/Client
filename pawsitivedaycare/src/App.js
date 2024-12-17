@@ -8,6 +8,7 @@ import ServicesPage from "./pages/ServicesPage";
 import AboutPage from "./pages/AboutPage";
 import MainDashboard from "./pages/MainDashboard";
 import BookingDashboard from "./pages/BookingDashboard";
+import UpdateBooking from "./pages/UpdateBooking";
 import "./App.css";
 import { UserContextProvider } from "./components/UserContext";
 import JoinController from "./pages/SignUpPage"
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/SignUp" element={ <JoinController />} />
                         <Route path="/MainDashboard" element={ <MainDashboard />} />
                         <Route path="/BookingDashboard" element={ <BookingDashboard />} />
+                        <Route path="/update-booking/:bookingId" element={ <UpdateBooking />} />
 
                         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
                     </Routes>

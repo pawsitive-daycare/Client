@@ -5,7 +5,7 @@ import { useUserContext } from "../components/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { user, setUser } = useUserContext();
+  const { user } = useUserContext();
   const [bookings, setBookings] = useState([]);
   const nav = useNavigate();
 
@@ -65,11 +65,6 @@ const Dashboard = () => {
       return `${day} of ${month}, ${year}`;
     };
 
-    const addBookingToUserContext = () => {
-      setUser({ ...user, booking });
-      console.log(booking, user, "Booking to modify added on user");
-    };
-
     const removeBooking = async () => {
       try {
         const response = await fetch(`${fetchURL}/bookings/${booking._id}`, {
@@ -98,7 +93,12 @@ const Dashboard = () => {
         <p>Date: {formatDate(booking.date)}</p>
         <p>Time: {booking.time}</p>
         <p>Price: ${booking.price}</p>
-        <button onClick={addBookingToUserContext}>Modify Booking</button>
+        <button
+          onClick={() => nav(`/update-booking/${booking._id}`)}
+          className="update-button"
+        >
+          Modify Booking
+        </button>
         <button onClick={removeBooking}>Remove Booking</button>
       </div>
     );
