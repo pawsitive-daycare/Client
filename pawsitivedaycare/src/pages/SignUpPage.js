@@ -44,15 +44,15 @@ const SignUpController = () => {
       });
 
       const data = await returnedUser.json()
-      .then((res) => {
-        console.log(res)
+      .then((data) => {
+        console.log(data)
         console.log("Attempting to register in DB")
-        if (res.code == 201) {
+        if (data.code === 201) {
           setUser({
-            _id: res.user_id,
-            email: res.email,
-            firstName: res.firstName,
-            tk: res.token
+            _id: data.user_id,
+            email: data.email,
+            firstName: data.firstName,
+            tk: data.token
             })
         alert("Thanks for registering!");
         return nav('/login');
