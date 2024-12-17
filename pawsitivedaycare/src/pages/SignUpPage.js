@@ -1,57 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/SignUpPage.css";
 import { useUserContext } from "../components/UserContext";
-import axios from "axios";
-
-const fetchURL = "https://pawsitivedaycare-backend.onrender.com";
+import { createUser } from "../components/api";
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
-  const { setUser } = useUserContext();
-
-  const [form, setForm] = useState({
+  const [userData , setUserData] = useState({
     email: "",
     firstName: "",
     lastName: "",
     phoneNumber: "",
-    password: "",
+    password: ""
   });
+  const navigate = useNavigate();
 
-  const handleForm = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }))};
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+    handleSubmit = async (event) => {
+      event.preventDefault();
 
-    if (!form.email || !form.firstName || !form.lastName || !form.password) {
-      return alert("Please enter the required fields");
-    }
+      const { email, firstName, lastName, phoneNumber, password } = userData;
 
-    try {
-      const response = await axios.post(`${fetchURL}/users/signup`, form);
-      const data = response.data;
+      if (!email || !firstName || !lastName || !password) {
+        return alert("Please fill in all fields");
+      }
 
-      if (data.code === 201) {
-        setUser({
-          _id: data.user_id,
-          email: data.email,
-          firstName: data.firstName,
-          tk: data.token,
+      try {
+        await createUser(userData);
+        setUserData({
+          email: "",
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+          password: ""
         });
-        alert("Thanks for registering!");
-        navigate("/LogIn");
-      } else(data.code === 406) 
-      
-        alert(`${data.message}. Please try again with another email.`);
-      } 
-     catch (error) {
-      console.log("Error during sign-up:", error.message);
-      alert("An error occurred. Please try again.");
+
+        navigate("/login"), {
+          state: { message: "Account created successfully. Please log in." }
+        }
+      } catch (error) {
+        console.log(error);
+        alert("An error occurred while creating your account. Please try again.");
+      }
     }
-  };
 
   return (
     <div className="sign-up-page">
@@ -60,7 +56,7 @@ const SignUpPage = () => {
         <p className="form-subtitle">
           Already have an account? <Link to="/LogIn">Login here</Link>
         </p>
-        <form className="sign-up-form" onSubmit={handleSignUp}>
+        <form className="sign-up-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
@@ -68,8 +64,8 @@ const SignUpPage = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              value={form.email}
-              onChange={handleForm}
+              value={userData.email}
+              onChange={handleChange}
             />
           </div>
           <div className="form-group">
@@ -79,8 +75,8 @@ const SignUpPage = () => {
               id="firstName"
               name="firstName"
               placeholder="Enter your first name"
-              value={form.firstName}
-              onChange={handleForm}
+              value={userData.firstName}
+              onChange={handleChange}
             />
           </div>
           <div className="form-group">
@@ -90,8 +86,8 @@ const SignUpPage = () => {
               id="lastName"
               name="lastName"
               placeholder="Enter your last name"
-              value={form.lastName}
-              onChange={handleForm}
+              value={userData.lastName}
+              onChange={handleChange}
             />
           </div>
           <div className="form-group">
@@ -101,8 +97,8 @@ const SignUpPage = () => {
               id="phoneNumber"
               name="phoneNumber"
               placeholder="Enter your phone number"
-              value={form.phoneNumber}
-              onChange={handleForm}
+              value={userData.phoneNumber}
+              onChange={handleChange}
             />
           </div>
           <div className="form-group">
@@ -112,8 +108,8 @@ const SignUpPage = () => {
               id="password"
               name="password"
               placeholder="Enter your password"
-              value={form.password}
-              onChange={handleForm}
+              value={userData.password}
+              onChange={handleChange}
             />
           </div>
           <button type="submit" className="submit-button">Submit</button>
