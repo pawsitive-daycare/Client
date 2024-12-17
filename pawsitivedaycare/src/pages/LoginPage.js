@@ -19,11 +19,8 @@ const Login = () => {
 
       const response = await loginUser(loginFormData);
 
-      if (response.success) {
-        navigate("/ContactUs");
-      } else {
-        alert("Login failed. Please check your credentials and try again.");
-      }
+      
+        navigate("/AboutUs");
     } catch (error) {
       console.log("Error logging in", error);
       alert("An error occurred during login. Please try again.");
@@ -80,53 +77,4 @@ export default Login;
 
 
 
-// const LoginController = () => {
-//   const { user, setUser } = useUserContext()
-//   const [ form, setForm ] = useState({
-//     email: "",
-//     password: "",
-//   });
-//   const nav = useNavigate()
 
-//   useEffect(() => {
-//     if (user) {
-//       nav("/MainDashboard");
-//     }
-//       console.log("LogIn page renders");
-//   }, [user, nav]);
-
-//   const handleForm = (e) => {
-//     const { name, value } = e.target;
-//     setForm({ ...form, [name]: value });
-//   };
-
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault()
-//     if (!form.email || !form.password) {
-//       return alert("Please fill in all fields") 
-//     }
-
-//     try {
-//       const returnedUser = await fetch(fetchURL + '/users/login', {
-//         method: "POST",
-//         headers: {
-//           Accept: "application/json",
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(form),
-//       });
-
-//       const data = await returnedUser.json();
-
-//         if (data.code === 200) {
-//           setUser(data.user);
-//           nav("/MainDashboard");
-//         } else {
-//           alert(data.message)
-//         }
-//     } catch (error) { 
-//       console.log(error.message);
-//       alert("An error occurred while logging in. Please try again.");
-//     }
-//   };
