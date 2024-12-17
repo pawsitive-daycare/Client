@@ -1,7 +1,6 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/SignUpPage.css";
-import { useUserContext } from "../components/UserContext";
 import { createUser } from "../components/api";
 
 const SignUpPage = () => {
@@ -26,7 +25,7 @@ const SignUpPage = () => {
 
       const { email, firstName, lastName, phoneNumber, password } = userData;
 
-      if (!email || !firstName || !lastName || !password) {
+      if (!email || !firstName || !lastName || !phoneNumber || !password) {
         return alert("Please fill in all fields");
       }
 
