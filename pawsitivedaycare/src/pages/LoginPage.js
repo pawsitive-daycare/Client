@@ -19,7 +19,7 @@ const Login = () => {
 
       await loginUser(loginFormData);
 
-      navigate("/ContactUs");
+      navigate("/");
     } catch (error) {
       console.log("Error logging in", error);
     }
