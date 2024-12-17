@@ -53,7 +53,7 @@ const SignUpController = () => {
           _id: data.user_id,
           email: data.email,
           firstName: data.firstName,
-          // tk: data.token,
+          tk: data.token,
         });
         alert("Thanks for registering!");
         nav("/LogIn");
@@ -69,7 +69,7 @@ const SignUpController = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    console.log("Form Submitted", form);
+    console.log("Form Submitted", form);  
 
     if (!form.email || !form.firstName || !form.lastName || !form.password) {
       return alert("Please enter the required fields");
