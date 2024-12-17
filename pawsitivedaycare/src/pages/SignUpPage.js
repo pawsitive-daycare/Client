@@ -60,7 +60,7 @@ const SignUpController = () => {
         setUser(null)
       }
     })
-      .catch(err => {
+      .catch(error => {
         setUser(null)
       console.log("Error during sign-up:", error.message);
       alert(`We're experiencing server fail. Please try again later.`)
