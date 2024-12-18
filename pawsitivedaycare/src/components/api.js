@@ -35,14 +35,15 @@ const loginUser = async (loginFormData) => {
       const data = await response.json();
   
       if (!response.ok) {
-        throw new Error(data.message);
+        throw new Error(data.message || "Login failed. Please try again.");
       }
   
       return data;
     } catch (error) {
-      throw new Error(error.message);
+      console.error("Error in loginUser:", error.message);
+      throw new Error("An error occurred during login. Please try again.");
     }
-}
+};
 
 
 export { fetchURL, createUser, loginUser };

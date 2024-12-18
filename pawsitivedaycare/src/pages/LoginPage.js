@@ -16,8 +16,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
-      console.log("login form data", loginFormData);
+    try {
+      console.log("Login form data", loginFormData);
 
       const response = await loginUser(loginFormData);
       console.log("Login response:", response);
