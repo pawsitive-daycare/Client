@@ -1,43 +1,52 @@
-/* General container styling */
 .update-Booking-page {
-  background-color: #28246f;
-  padding: 20px;
+  background-color: #28246f; /* Optional background color for the form container */
+  color: white;
+  padding: 30px;
   border-radius: 8px;
   width: 350px;
-  margin: 0 auto;
-  color: white;
-  font-family: Arial, sans-serif;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Form group styling for each field */
+/* Styling for each form group */
 .Form-group {
   margin-bottom: 15px;
 }
 
-/* Label styling */
+/* Styling for labels */
 .Form-group label {
-  font-weight: bold;
   display: block;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
-/* Input and textarea styling */
-.Form-group input,
-.Form-group textarea {
-  width: 100%;
+/* Styling for input fields */
+.Form-group input {
+  width: 90%;
   padding: 10px;
-  border: none;
+  border: 2px solid white;  /* White border */
   border-radius: 4px;
+  background-color: transparent; /* Transparent background */
+  color: white;  /* White text */
   font-size: 14px;
 }
 
-/* Textarea specific styling */
-.Form-group textarea {
-  resize: none;
-  height: 80px;
+/* Focus effect for inputs */
+.Form-group input:focus {
+  outline: none;
+  border-color: #ffc107; /* Yellow border on focus */
 }
 
-/* Submit button styling */
+/* Styling for the submit button */
 .Submit-button {
   background-color: #ffc107;
   color: #000;
@@ -48,8 +57,25 @@
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .Submit-button:hover {
   background-color: #e6a700;
+}
+
+@media (max-width: 450px) {
+  .update-Booking-page {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .Submit-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
 }
