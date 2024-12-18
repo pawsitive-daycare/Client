@@ -22,7 +22,7 @@ const Login = () => {
         const response = await loginUser(loginFormData);
         console.log("Login response:", response);
 
-        if (response && response.user && response.token) {
+        if (response && response.userId && response.token) {
           setUser({
             userId: response.userId,
             token: response.token,
