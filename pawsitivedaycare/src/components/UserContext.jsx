@@ -7,7 +7,7 @@ function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
 
   const addBookingToUserContext = (booking) => {
-    setUser({ ...user, booking });
+    setUser((prevUser) => ({ ...prevUser, booking }));
     console.log(booking, user, "Booking to modify added on user");
   };
 
