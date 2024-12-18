@@ -13,7 +13,6 @@ const UpdateBooking = () => {
     service: "",
     date: "",
     time: "",
-    price: "",
   });
 
   useEffect(() => {
@@ -37,7 +36,6 @@ const UpdateBooking = () => {
           service: data.booking.service,
           date: data.booking.date,
           time: data.booking.time,
-          price: data.booking.price,
         });
 
         addBookingToUserContext(data.booking);
@@ -113,17 +111,6 @@ const UpdateBooking = () => {
             id="time"
             name="time"
             value={form.time}
-            onChange={handleFormChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="price">Price:</label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={form.price}
             onChange={handleFormChange}
             required
           />
