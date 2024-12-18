@@ -10,10 +10,43 @@ function BookingDashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [name, setName] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Appointment Booked!\nService: ${service}\nTime: ${time}\nMessage: ${message}`);
+    
+    const newBooking = {
+      service,
+      name,
+      date: selectedDate.toISOString().split("T")[0], // Format date as 'YYYY-MM-DD'
+      time,
+      message,
   };
+
+  try {
+    const response = await fetch("https://your-backend-url.com/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newBooking),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to save booking");
+    }
+
+    alert(`Appointment Booked!\nService: ${service}\nTime: ${time}\nMessage: ${message}`);
+
+    // Reset form fields after booking
+    setService("");
+    setName("");
+    setTime("");
+    setMessage("");
+    setSelectedDate(new Date());
+  } catch (error) {
+    console.error("Error saving booking:", error.message);
+    alert("Error saving booking. Please try again.");
+  }
+};
 
   return (
     <div className="book-appointment-page">
