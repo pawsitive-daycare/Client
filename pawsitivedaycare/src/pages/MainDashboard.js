@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!user || !user.token) {
-      nav("/LogIn");
+      nav("/Login");
     } else {
       fetchBookings();
     }
