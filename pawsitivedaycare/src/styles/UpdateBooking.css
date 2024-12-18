@@ -14,6 +14,11 @@
   margin-bottom: 15px;
 }
 
+.update-Booking-form .Form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
 /* Label styling */
 .Form-group label {
   font-weight: bold;
@@ -24,7 +29,7 @@
 /* Input and textarea styling */
 .Form-group input,
 .Form-group textarea {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border: none;
   border-radius: 4px;
