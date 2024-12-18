@@ -4,7 +4,12 @@ import React, { createContext, useState, useContext } from "react";
 export const UserContext = createContext(null);
 
 function UserContextProvider({ children }) {
+  console.log("UserContextProvider is rendering");
+
   const [user, setUser] = useState(null);
+
+  console.log("Initial user state:", user);
+  console.log("setUser function:", setUser);
 
   const addBookingToUserContext = (booking) => {
     setUser((prevUser) => ({ ...prevUser, booking }));
@@ -12,9 +17,9 @@ function UserContextProvider({ children }) {
   };
 
   return (
-      <UserContext.Provider value={{ user, setUser, addBookingToUserContext }}>
-          {children}
-      </UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser, addBookingToUserContext }}>
+      {children}
+    </UserContext.Provider>
   );
 }
 
@@ -23,7 +28,7 @@ function useUserContext() {
     if (!context) {
         throw new Error("useUserContext must be used within a UserContextProvider");
     }
-    return UserContext;
+    return context;
 }
 
 export { UserContextProvider, useUserContext };

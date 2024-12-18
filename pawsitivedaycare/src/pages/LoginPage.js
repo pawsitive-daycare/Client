@@ -21,7 +21,6 @@ const Login = () => {
     console.log("setUser:", setUser);
 
     try {
-        console.log("Login form data", loginFormData);
         const response = await loginUser(loginFormData);
         console.log("Login response:", response);
 
@@ -43,7 +42,7 @@ const Login = () => {
     }
   };
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginFormData((prev) => ({
       ...prev,
