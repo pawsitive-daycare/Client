@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../styles/BookingDashboard.css";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import { fetchURL } from "../components/api";
+import { useUserContext } from "../components/UserContext";
 
 function BookingDashboard() {
   const [service, setService] = useState("");
@@ -10,19 +12,28 @@ function BookingDashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [name, setName] = useState("")
 
+  const { user } = useUserContext();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const formatDateToDDMMYYYY = (date) => {
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0"); 
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    };
+
     const newBooking = {
       service,
       name,
-      date: selectedDate.toISOString().split("T")[0], // Format date as 'YYYY-MM-DD'
+      date: formatDateToDDMMYYYY(selectedDate), 
       time,
       message,
   };
 
   try {
-    const response = await fetch("https://your-backend-url.com/api/bookings", {
+    const response = await fetch(`${fetchURL}/bookings/${user._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,9 +92,9 @@ function BookingDashboard() {
             <select id="time" value={time} onChange={(e) => setTime(e.target.value)} required>
               <option value="" disabled>Select a time</option>
               <option value="10:00 AM">10:00 AM</option>
-              <option value="10:30 PM">10:30 AM</option>
+              <option value="10:30 AM">10:30 AM</option>
               <option value="11:00 AM">11:00 AM</option>
-              <option value="11:30 PM">11:30 AM</option>
+              <option value="11:30 AM">11:30 AM</option>
               <option value="12:00 PM">12:00 PM</option>
               <option value="12:30 PM">12:30 PM</option>
               <option value="1:00 PM">1:00 PM</option>
