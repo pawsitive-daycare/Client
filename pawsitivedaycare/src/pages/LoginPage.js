@@ -26,7 +26,7 @@ const Login = () => {
 
         if (response && response.userId && response.token) {
           setUser({
-            userId: response.userId,
+            _id: response.userId,
             token: response.token,
         });
 

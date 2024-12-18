@@ -17,6 +17,11 @@ function BookingDashboard() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (!user || !user._id) {
+      alert("User not logged in. Please log in to book an appointment.");
+      return;
+    }
+
     const formatDateToDDMMYYYY = (date) => {
       const day = String(date.getDate()).padStart(2, "0");
       const month = String(date.getMonth() + 1).padStart(2, "0"); 
@@ -37,6 +42,7 @@ function BookingDashboard() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`,
       },
       body: JSON.stringify(newBooking),
     });
