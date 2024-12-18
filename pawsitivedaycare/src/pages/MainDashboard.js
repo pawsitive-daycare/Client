@@ -36,7 +36,7 @@ const Dashboard = () => {
 
 
   useEffect(() => {
-    if (!user) {
+    if (!user || !user.token) {
       nav("/LogIn");
     } else {
       fetchBookings();
@@ -90,6 +90,7 @@ const Dashboard = () => {
     return (
       <div className="booking-card">
         <h3>Service: {booking.service}</h3>
+        <p>Your User ID: {user?.userId}</p>
         <p>Date: {formatDate(booking.date)}</p>
         <p>Time: {booking.time}</p>
         <p>Price: ${booking.price}</p>

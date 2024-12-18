@@ -24,9 +24,10 @@ const Login = () => {
 
         if (response && response.user && response.token) {
           setUser({
-          ...response.user,
-          token: response.token,
+            userId: response.userId,
+            token: response.token,
         });
+
         console.log("User logged in successfully");
         navigate("/MainDashboard");
       } else {
