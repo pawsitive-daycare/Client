@@ -11,14 +11,17 @@ const Login = () => {
   });
 
   const { setUser } = useUserContext();
+  console.log("setUser function:", setUser);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("loginUser:", loginUser);
+    console.log("setUser:", setUser);
+
     try {
         console.log("Login form data", loginFormData);
-
         const response = await loginUser(loginFormData);
         console.log("Login response:", response);
 
@@ -35,7 +38,7 @@ const Login = () => {
         alert("Invalid response. Please try again.");
       }
     } catch (error) {
-      console.log("Error logging in", error);
+      console.log("Error logging in", error.message);
       alert("An error occurred during login. Please try again.");
     }
   };
