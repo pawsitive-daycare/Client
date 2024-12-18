@@ -79,10 +79,10 @@ const UpdateBooking = () => {
   };
 
   return (
-    <div className="update-booking-page">
+    <div className="update-Booking-page">
       <h1>Update Booking</h1>
-      <form className="update-booking-form" onSubmit={handleUpdate}>
-        <div className="form-group">
+      <form className="update-Booking-form" onSubmit={handleUpdate}>
+        <div className="Form-group">
           <label htmlFor="service">Service:</label>
           <input
             type="text"
@@ -93,7 +93,7 @@ const UpdateBooking = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="Form-group">
           <label htmlFor="date">Date:</label>
           <input
             type="date"
@@ -104,7 +104,7 @@ const UpdateBooking = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="Form-group">
           <label htmlFor="time">Time:</label>
           <input
             type="time"
@@ -115,7 +115,7 @@ const UpdateBooking = () => {
             required
           />
         </div>
-        <button type="submit" className="submit-button">Update Booking</button>
+        <button type="submit" className="Submit-button">Update Booking</button>
       </form>
     </div>
   );

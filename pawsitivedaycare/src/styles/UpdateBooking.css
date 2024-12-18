@@ -1,5 +1,5 @@
 /* General container styling */
-.update-booking-page {
+.update-Booking-page {
   background-color: #28246f;
   padding: 20px;
   border-radius: 8px;
@@ -10,20 +10,20 @@
 }
 
 /* Form group styling for each field */
-.form-group {
+.Form-group {
   margin-bottom: 15px;
 }
 
 /* Label styling */
-.form-group label {
+.Form-group label {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
 }
 
 /* Input and textarea styling */
-.form-group input,
-.form-group textarea {
+.Form-group input,
+.Form-group textarea {
   width: 100%;
   padding: 10px;
   border: none;
@@ -32,13 +32,13 @@
 }
 
 /* Textarea specific styling */
-.form-group textarea {
+.Form-group textarea {
   resize: none;
   height: 80px;
 }
 
 /* Submit button styling */
-.submit-button {
+.Submit-button {
   background-color: #ffc107;
   color: #000;
   padding: 12px;
@@ -50,6 +50,6 @@
   cursor: pointer;
 }
 
-.submit-button:hover {
+.Submit-button:hover {
   background-color: #e6a700;
 }
