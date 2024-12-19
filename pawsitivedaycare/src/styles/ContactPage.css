@@ -35,10 +35,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
   .contact-form .form-group {
     margin-bottom: 15px;
     text-align: left;
@@ -52,9 +48,14 @@
     font-weight: bold;
   }
   
+  input {
+    width: 98%;
+  }
+
   textarea {
     resize: none;
     height: 100px;
+    width: 98%;
   }
   
   .submit-button {
