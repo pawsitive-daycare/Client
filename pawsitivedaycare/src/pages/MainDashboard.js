@@ -155,7 +155,7 @@ const Dashboard = () => {
     
     return (
       <div className="booking-card-container">
-        {bookings.map((el, idx) => {
+        {Array.isArray(bookings) && bookings?.map((el, idx) => {
           const today = new Date();
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
