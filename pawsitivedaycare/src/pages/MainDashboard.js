@@ -119,7 +119,7 @@ const Dashboard = () => {
           </div>
           <div className="booking-info">
             <h3>{service}</h3>
-            <p>{time}0 up to 1 hour</p>
+            <p>{time} up to 1 hour</p>
             <div className="booking-buttons">
               <Link
                 className="update-button"
@@ -129,7 +129,7 @@ const Dashboard = () => {
                 Modify Booking
               </Link>
               <Link className="delete-button" to="" onClick={deleteBooking}>
-                canel booking
+                Cancel booking
               </Link>
             </div>
           </div>
