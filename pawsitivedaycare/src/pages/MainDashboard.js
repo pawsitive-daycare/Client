@@ -10,42 +10,46 @@ const Dashboard = () => {
   const nav = useNavigate();
 
   async function returnedBookings() {
-    await fetch(`${fetchURL}/mybookings/${user._id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        authorization: user.token,
-      },
-      body: JSON.stringify({
-        _id: user._id,
-      }),
-    }).catch((err) => {
-      console.log("Error fetching bookings", err.error);
-    });
-    const data = await bookings.json()
+    console.log(`${fetchURL}/mybookings/${user._id}`);
+    try{
+      console.log("User", user);
+      const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
+        method: "GET",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": user.token,
+        },
+        /*body: JSON.stringify({
+          _id: user._id,
+        }),*/ 
+      });
+      const data = await response.json()
       console.log("Bookings found")
-      setBookings(data.bookings);
+      setBookings(data);
+      
+    }
+    catch(err){
+      console.log("Error fetching bookings: ", err.message);
+    }
+   
   }
 
 
   useEffect(() => {
     console.log("fetching bookings");
-    try {
-      if (user === undefined) {
-        nav("/login");
-      }
-      returnedBookings();
-    } catch (error) {
-      console.log(error.message);
+    if (user === undefined) {
+      nav("/login");
     }
-  });
+    returnedBookings();
+    
+  }, []);
 
-  const BookingCard = ({ booking, date, service, time, price }) => {
-    const nthNumber = (str) => {
-      let i = Number(str);
-      let j = i % 10,
-        k = i % 100;
+  const BookingCard = ( {key, booking, day, month, year, service, time, price }) => {
+    const nthNumber = (x) => {
+      let i = parseInt(String(x),10);
+      let j = i % 10;
+      let k = i % 100;
 
       if (j === 1 && k !== 11) return i + "st";
       if (j === 2 && k !== 12) return i + "nd";
@@ -84,13 +88,13 @@ const Dashboard = () => {
         console.log(error.message);
       }
     };
-
+    
     return (
-      <>
+      
         <div className="booking-card">
           <div className="booking-date">
-            <h2>{nthNumber(date.date)} </h2>
-            <h2>{date.month}</h2>
+            <h2>{nthNumber(day)} </h2>
+            <h2>{month}</h2>
           </div>
           <div className="booking-info">
             <h3>{service}</h3>
@@ -109,7 +113,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </>
+  
     );
   };
 
@@ -124,27 +128,35 @@ const Dashboard = () => {
       </div>
     )
   }
-
+  
   const BookingCardContainer = () => {
+    console.log("Bookings: ",bookings)
+    
     return (
       <div className="booking-card-container">
         {bookings.map((el, idx) => {
           const today = new Date();
           const bookingDate = new Date(
-            `${el.date.year} ${el.date.month} ${el.date.date}`
+            `${el.date.year} ${el.date.month} ${el.date.day}`
           )
-          if (today.getTime() > bookingDate.getTime()) {
+          console.log("el" , {day: el.date.day, month: el.date.month, year: el.date.year});
+          /*if (today.getTime() > bookingDate.getTime()) {
             return null;
-          }
+          }*/
           return (
             <BookingCard
               key={idx}
               booking={el}
-              date={{ date: el.date, month: el.month, year: el.year }}
-              service={el.service}
-              time={el.time}
-              price={el.price}
-            />)
+              day={el.date.day}
+              month={el.date.month}
+              year={el.date.year }
+              service={el.service.name}
+              time={el.date.time}
+              price={el.service.price}
+            />
+            /*<h1>Hello World!</h1>*/
+          )
+            
         })}
         <BookingNowCard/>
       </div>
@@ -174,6 +186,7 @@ const Dashboard = () => {
   </main>
   )
 };
+
 export default Dashboard;
 
 
