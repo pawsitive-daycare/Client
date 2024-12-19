@@ -117,7 +117,7 @@ const Dashboard = () => {
     return (
       <div className="booking-card flex a-i-center shadow-btm">
         <div id="book-now-card" className="booking-date flex column a-i-center">
-          <Link className="" to={`BookingDashboard`}> 
+          <Link className="" to={`/BookingDashboard`}> 
             <button className="book-now-button">New booking</button>
             </Link>
         </div>
@@ -164,7 +164,7 @@ const Dashboard = () => {
     <section className="context-container flex column a-i-left">
       <div className="flex" id="my-detail-container">
         <h2 className="heading" id="my-detail">My detail</h2>
-        <Link id="update-my-detail" to="/my_account/update" className='sub-menu flex'>
+        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
           <p>Update my detail</p>
           <i className="fas fa-chevron-right"></i></Link>
       </div>

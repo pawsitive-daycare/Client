@@ -15,6 +15,7 @@ import { UserContextProvider } from "./components/UserContext";
 import LoginController from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 
+
 function App() {
     return (
         <UserContextProvider>
