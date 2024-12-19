@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
@@ -9,31 +9,53 @@ const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
   const nav = useNavigate();
 
-  async function returnedBookings() {
+  const returnedBookings = useCallback(async () => {
     console.log(`${fetchURL}/mybookings/${user._id}`);
-    try{
+    try {
       console.log("User", user);
       const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
         method: "GET",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
-          "Authorization": user.token,
+          Authorization: user.token,
         },
-        /*body: JSON.stringify({
-          _id: user._id,
-        }),*/ 
       });
-      const data = await response.json()
-      console.log("Bookings found")
+      const data = await response.json();
+      console.log("Bookings found");
       setBookings(data);
-      
-    }
-    catch(err){
+    } catch (err) {
       console.log("Error fetching bookings: ", err.message);
     }
+  }, [user]);
+
+
+  // const returnedBookings = useCallback(async () => {
+  //   console.log(`${fetchURL}/mybookings/${user._id}`);
+  //   try{
+  //     console.log("User", user);
+  //     const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Accept": "application/json",
+  //         "Content-Type": "application/json",
+  //         "Authorization": user.token,
+  //       },
+  //       /*body: JSON.stringify({
+  //         _id: user._id,
+  //       }),*/ 
+  //     });
+  //     const data = await response.json()
+  //     console.log("Bookings found")
+  //     setBookings(data);
+      
+  //   }
+    
+  //   catch(err){
+  //     console.log("Error fetching bookings: ", err.message);
+    
    
-  }
+  // }
 
 
   useEffect(() => {
@@ -41,9 +63,8 @@ const Dashboard = () => {
     if (user === undefined) {
       nav("/login");
     }
-    returnedBookings();
-    
-  }, []);
+    returnedBookings();  
+    }, [ user, nav, returnedBookings]);
 
   const BookingCard = ( {key, booking, day, month, year, service, time, price }) => {
     const nthNumber = (x) => {
@@ -139,7 +160,7 @@ const Dashboard = () => {
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
           )
-          console.log("el" , {day: el.date.day, month: el.date.month, year: el.date.year});
+          console.log("el", today, bookingDate, {day: el.date.day, month: el.date.month, year: el.date.year});
           /*if (today.getTime() > bookingDate.getTime()) {
             return null;
           }*/
