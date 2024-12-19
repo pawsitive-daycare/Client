@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { data, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUserContext } from "../components/UserContext";
 import { fetchURL } from "../components/api";
 import "../styles/BookingDashboard.css";
@@ -87,10 +87,9 @@ const BookingDashboard = () => {
     });
 
     const data = await response.json();
+    alert(`Appointment Booked!\nService: ${data.service_name}\nDate: ${data.date}\nTime: ${data.time}\nPet: ${data.pet_name}\nPrice: ${data.service_price}`);
     console.log(data);
   };
-
-alert(`Appointment Booked!\nService: ${data.service_name}\nDate: ${data.date}\nTime: ${data.time}\nPet: ${data.pet_name}\nPrice: ${data.service_price}`);
 
 // Reset form fields after booking
   const emptyForm = () => {
@@ -106,138 +105,130 @@ alert(`Appointment Booked!\nService: ${data.service_name}\nDate: ${data.date}\nT
     return false;
   }
 };
+
 const handleSubmit = async (e) => {
-  console.log(form, "before submit");
-  if (emptyForm()) {
-    e.preventDefault();
-    await addBooking(
-      form.date,
-      form.service_name,
-      form.service_price,
-      form.pet_animal,
-      form.pet_name,
-      form.pet_breed,
-      form.pet_age
-    );
+  e.preventDefault();
+  if (!emptyForm()) {
+    await addBooking();
   } else {
     alert("Please fill all fields");
-    return;
   }
+};
 
-  return (
-    <div className="book-appointment-page">
-      <header className="book-appointment-header">
-        <h1 className="dashboard-title">Dashboard</h1>
-      </header>
+return (
+  <div className="book-appointment-page">
+    <header className="book-appointment-header">
+      <h1 className="dashboard-title">Dashboard</h1>
+    </header>
 
-      <div className="book-appointment-container">
-        <h2 className="appointment-title">
-          <i>Book your appointment</i>
-        </h2>
+    <div className="book-appointment-container">
+      <h2 className="appointment-title">
+        <i>Book your appointment</i>
+      </h2>
 
-        <form className="appointment-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <select
-              defaultValue={
-                state?.service_name ? state.service_name : "DEFAULT"
-              }
-              onChange={handleForm}
-              id="packages-dropbox"
-              required
-              name="service_name"
-            >
-              <option value="DEFAULT" disabled>
-                Select a service
-              </option>
-              {ourServices.map((el, idx) => {
-                return (
-                  <option key={idx} value={el.service_name}>
-                    {el.service_name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+      <form className="appointment-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <select
+            defaultValue={
+              state?.service_name ? state.service_name : "DEFAULT"
+            }
+            onChange={handleForm}
+            id="packages-dropbox"
+            required
+            name="service_name"
+          >
+            <option value="DEFAULT" disabled>
+              Select a service
+            </option>
+            {ourServices.map((el, idx) => {
+              return (
+                <option key={idx} value={el.service_name}>
+                  {el.service_name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
 
-          <div className="form-group">
-            <input
-              onChange={handleForm}
-              value={form.pet_animal}
-              type="text"
-              className="booking-input"
-              name="pet_animal"
-              required
-              placeholder={"pet animal"}
-            />
-            <input
-              onChange={handleForm}
-              value={form.pet_name}
-              type="text"
-              className="booking-input"
-              name="pet_name"
-              required
-              placeholder={"pet name *"}
-            />
-            <input
-              onChange={handleForm}
-              value={form.pet_breed}
-              type="text"
-              className="booking-input"
-              name="pet_breed"
-              placeholder={"pet breed"}
-            />
-            <input
-              onChange={handleForm}
-              value={form.pet_age}
-              type="number"
-              className="booking-input"
-              name="pet_age"
-              placeholder={"pet age"}
-            />
-          </div>
+        <div className="form-group">
+          <input
+            onChange={handleForm}
+            value={form.pet_animal}
+            type="text"
+            className="booking-input"
+            name="pet_animal"
+            required
+            placeholder={"Pet animal"}
+          />
+          <input
+            onChange={handleForm}
+            value={form.pet_name}
+            type="text"
+            className="booking-input"
+            name="pet_name"
+            required
+            placeholder={"Pet name"}
+          />
+          <input
+            onChange={handleForm}
+            value={form.pet_breed}
+            type="text"
+            className="booking-input"
+            name="pet_breed"
+            placeholder={"Pet breed"}
+          />
+          <input
+            onChange={handleForm}
+            value={form.pet_age}
+            type="number"
+            className="booking-input"
+            name="pet_age"
+            placeholder={"Pet age"}
+          />
+        </div>
 
-          <div className="calendar-section">
-            <h3>Select Date</h3>
-            <Calendar onChange={setSelectedDate} value={selectedDate} />
-            <p>Selected Date: {selectedDate.toDateString()}</p>
-          </div>
+        <div className="calendar-section">
+          <h3>Select Date</h3>
+          <Calendar onChange={setSelectedDate} value={selectedDate} />
+          <p>Selected Date: {selectedDate.toDateString()}</p>
+        </div>
 
-          <div className="form-group">
-            <select
-              id="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              required
-            >
-              <option value="" disabled>
-                Select a time
-              </option>
-              <option value="10:00 AM">10:00 AM</option>
-              <option value="10:30 AM">10:30 AM</option>
-              <option value="11:00 AM">11:00 AM</option>
-              <option value="11:30 AM">11:30 AM</option>
-              <option value="12:00 PM">12:00 PM</option>
-              <option value="12:30 PM">12:30 PM</option>
-              <option value="1:00 PM">1:00 PM</option>
-              <option value="1:30 PM">1:30 PM</option>
-              <option value="2:00 PM">2:00 PM</option>
-              <option value="2:30 PM">2:30 PM</option>
-              <option value="3:00 PM">3:00 PM</option>
-              <option value="3:30 PM">3:30 PM</option>
-              <option value="4:00 PM">4:00 PM</option>
-              <option value="4:30 PM">4:30 PM</option>
-              <option value="5:00 PM">5:00 PM</option>
-              <option value="5:30 PM">5:30 PM</option>
-              <option value="6:00 PM">6:00 PM</option>
-            </select>
-          </div>
-          <button type="submit" className="save-button">
-            Save
-          </button>
-        </form>
-      </div>
+        <div className="form-group">
+          <select
+            id="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+          >
+            <option value="" disabled>
+              Select a time
+            </option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="10:30 AM">10:30 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="11:30 AM">11:30 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="12:30 PM">12:30 PM</option>
+            <option value="1:00 PM">1:00 PM</option>
+            <option value="1:30 PM">1:30 PM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="2:30 PM">2:30 PM</option>
+            <option value="3:00 PM">3:00 PM</option>
+            <option value="3:30 PM">3:30 PM</option>
+            <option value="4:00 PM">4:00 PM</option>
+            <option value="4:30 PM">4:30 PM</option>
+            <option value="5:00 PM">5:00 PM</option>
+            <option value="5:30 PM">5:30 PM</option>
+            <option value="6:00 PM">6:00 PM</option>
+          </select>
+        </div>
+        <button type="submit" className="save-button">
+          Save
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
-};
+
 export default BookingDashboard;

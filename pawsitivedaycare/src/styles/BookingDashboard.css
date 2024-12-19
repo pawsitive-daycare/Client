@@ -6,8 +6,9 @@
     background-color: #f9f9f9; /* Background color for the page */
     padding: 20px;
     box-sizing: border-box;     /* Include padding in the height calculation */
-    
   }
+
+  
   
   /* Header Styling */
   .book-appointment-header {
@@ -54,6 +55,9 @@
   /* Form Group Styling */
   .form-group {
     margin-bottom: 20px;
+    display: flex;
+  flex-direction: column;
+  gap: 15px;
   }
   
   textarea {
