@@ -156,13 +156,6 @@ const Dashboard = () => {
             />
           );
         })}
-        <div className="booking-cta-button">
-          <div id="book-now-card" className="booking-date flex column a-i-center">
-            <Link className="" to={`/BookingDashboard`}> 
-              <button className="book-now-button">New booking</button>
-            </Link>
-          </div>
-        </div>
       </div>
     );
   };
