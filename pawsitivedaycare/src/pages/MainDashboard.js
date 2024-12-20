@@ -4,15 +4,6 @@ import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
-const getMonthName = (monthNumber) => {
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-  return monthNames[monthNumber - 1] || "Invalid Month"; 
-};
-
-
 const Dashboard = () => {
   const { user, setUser } = useUserContext();
   const [bookings, setBookings] = useState([]);
@@ -38,35 +29,6 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
-  // const returnedBookings = useCallback(async () => {
-  //   console.log(`${fetchURL}/mybookings/${user._id}`);
-  //   try{
-  //     console.log("User", user);
-  //     const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Accept": "application/json",
-  //         "Content-Type": "application/json",
-  //         "Authorization": user.token,
-  //       },
-  //       /*body: JSON.stringify({
-  //         _id: user._id,
-  //       }),*/ 
-  //     });
-  //     const data = await response.json()
-  //     console.log("Bookings found")
-  //     setBookings(data);
-      
-  //   }
-    
-  //   catch(err){
-  //     console.log("Error fetching bookings: ", err.message);
-    
-   
-  // }
-
-
   useEffect(() => {
     console.log("fetching bookings");
     if (user === undefined) {
@@ -87,7 +49,6 @@ const Dashboard = () => {
       return i + "th";
     };
 
-    
     const addBookingToUserContext = () => {
       setUser({
         ...user,
@@ -120,13 +81,12 @@ const Dashboard = () => {
   return (
     <div className="booking-card">
       <div className="booking-date">
-        <h3>{nthNumber(day)} {month} {year} </h3>
-      <div className="booking-info">
-        <h3>Lumio</h3>
-        <h3>{service}</h3>
-        <p>{time} Up to 1 Hour</p>
+        <h2>{nthNumber(day)} </h2>
+        <h2>{month}</h2>
       </div>
-    </div>
+      <div className="booking-info">
+        <h3>{service}</h3>
+        <p>{time} up to 1 hour</p>
         <div className="booking-buttons">
           <Link
             className="update-button"
@@ -138,21 +98,22 @@ const Dashboard = () => {
             Cancel booking
           </Link>
         </div>
+      </div>
     </div>
   );
   };
 
-  // const BookingNowCard = () => {
-  //   return (
-  //     <div className="booking-cta-button">
-  //       <div id="book-now-card" className="booking-date flex column a-i-center">
-  //         <Link className="" to={`/BookingDashboard`}> 
-  //           <button className="book-now-button">New booking</button>
-  //           </Link>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+  const BookingNowCard = () => {
+    return (
+      <div className="booking-cta-button">
+        <div id="book-now-card" className="booking-date flex column a-i-center">
+          <Link className="" to={`/BookingDashboard`}> 
+            <button className="book-now-button">New booking</button>
+            </Link>
+        </div>
+      </div>
+    )
+  }
   
   const BookingCardContainer = () => {
     console.log("Bookings: ",bookings)
@@ -172,7 +133,7 @@ const Dashboard = () => {
               key={idx}
               booking={el}
               day={el.date.day}
-              month={getMonthName(el.date.month)}
+              month={el.date.month}
               year={el.date.year }
               service={el.service.name}
               time={el.date.time}
@@ -204,8 +165,15 @@ const Dashboard = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
+      <div className="flex" id="my-detail-container">
+        <h2 className="heading" id="my-detail">My detail</h2>
+        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
+          <p>Update my detail</p>
+          <i className="fas fa-chevron-right"></i></Link>
+      </div>
       <h2 className="heading">My bookings</h2>
         <BookingCardContainer/>
+        <BookingNowCard/>
     </section>
   </main>
   );
