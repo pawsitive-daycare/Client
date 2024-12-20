@@ -16,6 +16,7 @@ function UserContextProvider({ children }) {
     console.log(booking, user, "Booking to modify added on user");
   };
 
+  
   return (
     <UserContext.Provider value={{ user, setUser, addBookingToUserContext }}>
       {children}
