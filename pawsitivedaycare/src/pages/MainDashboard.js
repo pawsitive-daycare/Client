@@ -3,6 +3,7 @@ import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { Link, useNavigate } from "react-router-dom";
+// import { useUserContext } from "../components/UserContext";
 
 const getMonthName = (monthNumber) => {
   const monthNames = [
@@ -114,10 +115,10 @@ const Dashboard = () => {
             <Link
               className="update-button"
               to={`/update-booking/${booking._id}`}
-              onClick={addBookingToUserContext}
-            >
+              onClick={addBookingToUserContext}              
+            >             
               Modify Booking
-            </Link>
+            </Link> 
             <Link className="delete-button" to="" onClick={deleteBooking}>
               Cancel booking
             </Link>
@@ -148,10 +149,10 @@ const Dashboard = () => {
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
           );
-          console.log("el", today, bookingDate, { day: el.date.day, month: el.date.month, year: el.date.year });
-          /*if (today.getTime() > bookingDate.getTime()) {
+          console.log("el", today, bookingDate,  { day: el.date.day, month: el.date.month, year: el.date.year });
+          if (bookingDate < today) {
             return null;
-          }*/
+          }
           return (
             <BookingCard
               key={idx}
@@ -160,7 +161,7 @@ const Dashboard = () => {
               month={el.date.month}
               year={el.date.year}
               service={el.service.name}
-              time={el.time}
+              time={el.date.time}
               price={el.service.price}
               petName={el.pet.name}
             />
@@ -175,7 +176,7 @@ const Dashboard = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
-        <h2 className="heading ">Welcome back, <br/>{ user !== undefined ? user.firstName : "Visitor"} </h2>
+        <h2 className="heading ">Welcome back <br/>{ user !== undefined ? user.firstName : "Visitor"} </h2>
         <p className="heading-description">
           Please see more information below.
         </p>
