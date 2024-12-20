@@ -143,11 +143,6 @@ const Dashboard = () => {
           );
         })};
         <div className="booking-cta-button">
-          <div id="book-now-card" className="booking-date flex column a-i-center">
-            <Link className="" to={`/BookingDashboard`}> 
-              <button className="book-now-button">New booking</button>
-            </Link>
-          </div>
         </div>
       </div>
     );
@@ -165,12 +160,6 @@ const Dashboard = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <div className="flex" id="my-detail-container">
-        <h2 className="heading" id="my-detail">My detail</h2>
-        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
-          <p>Update my detail</p>
-          <i className="fas fa-chevron-right"></i></Link>
-      </div>
       <h2 className="heading">My bookings</h2>
         <BookingCardContainer/>
         <BookingNowCard/>
