@@ -75,7 +75,7 @@ const Dashboard = () => {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
-              Authorization: user.token,
+              authorization: user.token,
             },
           }
         );
@@ -158,7 +158,7 @@ const Dashboard = () => {
         })}
         <div className="booking-cta-button">
           <div id="book-now-card" className="booking-date flex column a-i-center">
-            <Link className="" to={`/BookingDashboard`}>
+            <Link className="" to={`/BookingDashboard`}> 
               <button className="book-now-button">New booking</button>
             </Link>
           </div>
@@ -169,21 +169,27 @@ const Dashboard = () => {
 
   return (
     <main id="my-account-page">
-      <article className="page-header flex column j-c-center a-i-center">
-        <div id="my-account" className="main-bg-container" />
-        <div className="heading-container text-shadow">
-          <h2 className="heading">Welcome back, <br />{user !== undefined ? user.firstName : "Visitor"}</h2>
-          <p className="heading-description">
-            Please see more information below.
-          </p>
-        </div>
-      </article>
-      <section className="context-container flex column a-i-left">
-        <h2 className="heading">My bookings</h2>
-        <BookingCardContainer />
-        <BookingNowCard />
-      </section>
-    </main>
+    <article className="page-header flex column j-c-center a-i-center">
+      <div id="my-account" className="main-bg-container"/>
+      <div className="heading-container text-shadow">
+        <h2 className="heading ">Welcome back, <br/>{ user !== undefined ? user.firstName : "Visitor"} </h2>
+        <p className="heading-description">
+          Please see more information below.
+        </p>
+      </div>
+    </article>
+    <section className="context-container flex column a-i-left">
+      <div className="flex" id="my-detail-container">
+        <h2 className="heading" id="my-detail">My detail</h2>
+        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
+          <p>Update my detail</p>
+          <i className="fas fa-chevron-right"></i></Link>
+      </div>
+      <h2 className="heading">My bookings</h2>
+        <BookingCardContainer/>
+        <BookingNowCard/>
+    </section>
+  </main>
   );
 };
 
