@@ -8,6 +8,41 @@
   position: relative;
 }
 
+.booking-buttons {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Modify Booking Button */
+.update-button {
+  color: black;
+}
+
+.update-button:hover {
+  background-color: white;
+  color: #4a90e2;
+  border-radius: 5px;
+  padding: 1px;
+}
+
+/* Cancel Booking Button */
+.delete-button {
+  color: black;
+}
+
+.delete-button:hover {
+  background-color: white;
+  color: #e94e;
+  border-radius: 5px;
+  padding: 1px;
+}
+
 .booking-cta-button {
   display: flex;
   justify-content: center;
