@@ -15,6 +15,9 @@ const UpdateBooking = () => {
     time: "",
   });
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
@@ -41,6 +44,9 @@ const UpdateBooking = () => {
         addBookingToUserContext(data.booking);
       } catch (error) {
         console.error("Error fetching booking details:", error.message);
+        setError("Failed to load booking details. Please try again.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -61,7 +67,7 @@ const UpdateBooking = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          authorization: user.token,
+          Authorization: `Bearer ${user.token}`,
         },
         body: JSON.stringify(form),
       });
@@ -77,6 +83,14 @@ const UpdateBooking = () => {
       alert("An error occurred. Please try again.");
     }
   };
+
+  if (loading) {
+    return <p>Loading booking details...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className="update-Booking-page">
