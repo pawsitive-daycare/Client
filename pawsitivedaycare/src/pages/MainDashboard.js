@@ -75,7 +75,7 @@ const Dashboard = () => {
     returnedBookings();  
     }, [ user, nav, returnedBookings]);
 
-  const BookingCard = ( {key, booking, day, month, year, service, time, pet_name, pet_breed }) => {
+  const BookingCard = ( {key, booking, day, month, year, service, time, price }) => {
     const nthNumber = (x) => {
       let i = parseInt(String(x),10);
       let j = i % 10;
@@ -125,9 +125,8 @@ const Dashboard = () => {
       <div className="booking-date">
         <h3>{nthNumber(day)} {month} {year} </h3>
       <div className="booking-info">
-        <h3>{pet_name}</h3>
+        <h3>Lumio</h3>
         <h3>{service}</h3>
-        <h3>{pet_breed}</h3>
         <p>{time} Up to 1 Hour</p>
       </div>
     </div>
