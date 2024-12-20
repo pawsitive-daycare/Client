@@ -53,7 +53,7 @@ const BookingDashboard = () => {
 
     const formattedDate = {
       year: selectedDate.getFullYear(),
-      month: selectedDate.getMonth() + 1, // Months are 0-indexed in JavaScript
+      month: selectedDate.getMonth() + 1, 
       day: selectedDate.getDate(),
       time,
     };
