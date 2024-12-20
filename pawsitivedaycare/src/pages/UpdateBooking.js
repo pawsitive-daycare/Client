@@ -22,9 +22,11 @@ const UpdateBooking = () => {
   console.log("Booking:", bookingId);
   
   const fetchBookingDetails = useCallback(async () => {
-    console.log(`${fetchURL}/mybookings/${bookingId}`);
-    try {
-      console.log("User Token:", user.token);
+    console.log("User Token:", user?.token);
+    console.log("Booking ID:", bookingId);
+    console.log("Fetch URL:", `${fetchURL}/mybookings/${bookingId}`);
+
+    try {  
       const response = await fetch(`${fetchURL}/mybookings/${bookingId}`, {
         method: "GET",
         headers: {
@@ -35,7 +37,7 @@ const UpdateBooking = () => {
       });
 
       const data = await response.json();
-      console.log("Fetched Data:", data);
+      console.log("API Response:", response.status, data);
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to fetch booking details");
