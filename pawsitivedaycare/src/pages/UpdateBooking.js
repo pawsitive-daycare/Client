@@ -61,6 +61,9 @@ const UpdateBooking = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
+    console.log("Form Data:", form);
+    console.log("Token:", user?.token);
+
     try {
       const response = await fetch(`${fetchURL}/bookings/${bookingId}`, {
         method: "PUT",
@@ -72,8 +75,11 @@ const UpdateBooking = () => {
         body: JSON.stringify(form),
       });
 
+      const data = await response.json();
+      console.log("Server Response:", data);
+
       if (!response.ok) {
-        throw new Error("Failed to update booking");
+        throw new Error(data.error || "Failed to update booking");
       }
 
       alert("Booking updated successfully!");

@@ -17,16 +17,21 @@
 }
   
   /* Individual Booking Card */
+.booking-card h2,
+.booking-card h3,
+.booking-card p {
+  margin: 0;          /* Remove default margins */
+  padding: 1px;     /* Add consistent padding */
+}
+  
 .booking-card {
   display: flex;
   flex-direction: column;
-  
-  align-content: center;
+  align-items: center;
   background-color: #4f6ef5;
   color: white;
   padding: 20px;
   border-radius: 10px;
-  text-align: left;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   width: auto;

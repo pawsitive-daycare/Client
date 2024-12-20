@@ -4,6 +4,15 @@ import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 
+const getMonthName = (monthNumber) => {
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return monthNames[monthNumber - 1] || "Invalid Month"; 
+};
+
+
 const Dashboard = () => {
   const { user, setUser } = useUserContext();
   const [bookings, setBookings] = useState([]);
@@ -66,7 +75,7 @@ const Dashboard = () => {
     returnedBookings();  
     }, [ user, nav, returnedBookings]);
 
-  const BookingCard = ( {key, booking, day, month, year, service, time, price }) => {
+  const BookingCard = ( {key, booking, day, month, year, service, time, pet_name }) => {
     const nthNumber = (x) => {
       let i = parseInt(String(x),10);
       let j = i % 10;
@@ -78,6 +87,7 @@ const Dashboard = () => {
       return i + "th";
     };
 
+    
     const addBookingToUserContext = () => {
       setUser({
         ...user,
@@ -113,12 +123,13 @@ const Dashboard = () => {
   return (
     <div className="booking-card">
       <div className="booking-date">
-        <h2>{nthNumber(day)} </h2>
-        <h2>{month}</h2>
-      </div>
+        <h3>{nthNumber(day)} {month} {year} </h3>
       <div className="booking-info">
+        <h3>{pet_name}</h3>
         <h3>{service}</h3>
-        <p>{time} up to 1 hour</p>
+        <p>{time} Up to 1 Hour</p>
+      </div>
+    </div>
         <div className="booking-buttons">
           <Link
             className="update-button"
@@ -130,7 +141,6 @@ const Dashboard = () => {
             Cancel booking
           </Link>
         </div>
-      </div>
     </div>
   );
   };
@@ -165,7 +175,7 @@ const Dashboard = () => {
               key={idx}
               booking={el}
               day={el.date.day}
-              month={el.date.month}
+              month={getMonthName(el.date.month)}
               year={el.date.year }
               service={el.service.name}
               time={el.date.time}
@@ -197,12 +207,6 @@ const Dashboard = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <div className="flex" id="my-detail-container">
-        <h2 className="heading" id="my-detail">My detail</h2>
-        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
-          <p>Update my detail</p>
-          <i className="fas fa-chevron-right"></i></Link>
-      </div>
       <h2 className="heading">My bookings</h2>
         <BookingCardContainer/>
     </section>
