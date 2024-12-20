@@ -110,49 +110,45 @@ const Dashboard = () => {
       }
     };
     
-    return (
-      
-        <div className="booking-card">
-          <div className="booking-date">
-            <h2>{nthNumber(day)} </h2>
-            <h2>{month}</h2>
-          </div>
-          <div className="booking-info">
-            <h3>{service}</h3>
-            <p>{time} up to 1 hour</p>
-            <div className="booking-buttons">
-              <Link
-                className="update-button"
-                to={`/update-booking/${booking._id}`}
-                onClick={addBookingToUserContext}
-              >
-                Modify Booking
-              </Link>
-              <Link className="delete-button" to="" onClick={deleteBooking}>
-                Cancel booking
-              </Link>
-            </div>
-          </div>
-        </div>
-  
-    );
-  };
-
-  const BookingNowCard = () => {
-    return (
-      <div className="booking-card flex a-i-center shadow-btm">
-        <div id="book-now-card" className="booking-date flex column a-i-center">
-          <Link className="" to={`/BookingDashboard`}> 
-            <button className="book-now-button">New booking</button>
-            </Link>
+  return (
+    <div className="booking-card">
+      <div className="booking-date">
+        <h2>{nthNumber(day)} </h2>
+        <h2>{month}</h2>
+      </div>
+      <div className="booking-info">
+        <h3>{service}</h3>
+        <p>{time} up to 1 hour</p>
+        <div className="booking-buttons">
+          <Link
+            className="update-button"
+            to={`/update-booking/${booking._id}`}
+            onClick={addBookingToUserContext}>
+            Modify Booking
+          </Link>
+          <Link className="delete-button" to="" onClick={deleteBooking}>
+            Cancel booking
+          </Link>
         </div>
       </div>
-    )
-  }
+    </div>
+  );
+  };
+
+  // const BookingNowCard = () => {
+  //   return (
+  //     <div className="booking-cta-button">
+  //       <div id="book-now-card" className="booking-date flex column a-i-center">
+  //         <Link className="" to={`/BookingDashboard`}> 
+  //           <button className="book-now-button">New booking</button>
+  //           </Link>
+  //       </div>
+  //     </div>
+  //   )
+  // }
   
   const BookingCardContainer = () => {
     console.log("Bookings: ",bookings)
-    
     return (
       <div className="booking-card-container">
         {Array.isArray(bookings) && bookings?.map((el, idx) => {
@@ -176,13 +172,19 @@ const Dashboard = () => {
               price={el.service.price}
             />
             /*<h1>Hello World!</h1>*/
-          )
-            
-        })}
-        <BookingNowCard/>
+          );
+        })};
+        <div className="booking-cta-button">
+          <div id="book-now-card" className="booking-date flex column a-i-center">
+            <Link className="" to={`/BookingDashboard`}> 
+              <button className="book-now-button">New booking</button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   };
+  
   return (
     <main id="my-account-page">
     <article className="page-header flex column j-c-center a-i-center">
@@ -205,7 +207,7 @@ const Dashboard = () => {
         <BookingCardContainer/>
     </section>
   </main>
-  )
+  );
 };
 
 export default Dashboard;
