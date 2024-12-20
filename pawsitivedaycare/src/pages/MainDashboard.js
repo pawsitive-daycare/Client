@@ -151,9 +151,9 @@ const Dashboard = () => {
             `${el.date.year} ${el.date.month} ${el.date.day}`
           );
           console.log("el", today, bookingDate,  { day: el.date.day, month: el.date.month, year: el.date.year });
-          /*if (today.getTime() > bookingDate.getTime()) {
+          if (bookingDate < today) {
             return null;
-          }*/
+          }
           return (
             <BookingCard
               key={idx}
@@ -177,7 +177,7 @@ const Dashboard = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
-        <h2 className="heading ">Welcome back, <br/>{ user !== undefined ? user.firstName : "Visitor"} </h2>
+        <h2 className="heading ">Welcome back <br/>{ user !== undefined ? user.firstName : "Visitor"} </h2>
         <p className="heading-description">
           Please see more information below.
         </p>
