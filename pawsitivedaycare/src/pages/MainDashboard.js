@@ -90,7 +90,6 @@ const Dashboard = () => {
 
     if (response.ok) {
       await response.json();
-      alert("Booking removed successfully!");
       returnedBookings(); // Refresh the bookings list
     } else {
       const errorData = await response.json();
@@ -110,7 +109,7 @@ const Dashboard = () => {
         <div className="booking-info">
           <h3>{petName}</h3>
           <h3>{service}</h3>
-          <p>{time}</p>
+          <h3>{time}</h3>
           <div className="booking-buttons">
             <Link
               className="update-button"
