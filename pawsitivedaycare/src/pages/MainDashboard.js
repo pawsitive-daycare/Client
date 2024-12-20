@@ -97,17 +97,14 @@ const Dashboard = () => {
     };
     const deleteBooking = async () => {
       try {
-        const bookingToDelete = await fetch(
-          `${fetchURL}/mybookings/${booking._id}`,
-          {
-            method: "DELETE",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              authorization: user.token,
-            },
-          }
-        );
+        const bookingToDelete = await fetch(`${fetchURL}/mybookings/${booking._id}`, {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
 
         const data = await bookingToDelete.json();
         if (data.code === 200) {
