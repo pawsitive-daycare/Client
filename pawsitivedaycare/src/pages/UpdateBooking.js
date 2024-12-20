@@ -20,38 +20,57 @@ const UpdateBooking = () => {
     pet_age: "",
   });
   console.log("Booking:", bookingId);
+  
   const fetchBookingDetails = useCallback(async () => {
     console.log(`${fetchURL}/mybookings/${bookingId}`);
     try {
-      console.log("User", user);
+      console.log("User Token:", user.token);
       const response = await fetch(`${fetchURL}/mybookings/${bookingId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: user.token,
+          Authorization: `Bearer ${user.token}`,
         },
       });
+
       const data = await response.json();
-      setForm({
-        service_name: data.service.name,
-        pet_animal: data.pet.animal,
-        pet_name: data.pet.name,
-        pet_breed: data.pet.breed,
-        pet_age: data.pet.age,
-      });
-      setSelectedDate(new Date(data.date.year, data.date.month - 1, data.date.day));
-      setTime(data.date.time);
+      console.log("Fetched Data:", data);
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to fetch booking details");
+      }
+
+      if (data.message === "No bookings found") {
+        alert("No booking found with the provided ID.");
+        nav("/MainDashboard");
+        return;
+      }
+
+      if (data && data.service && data.pet && data.date) {
+        setForm({
+          service_name: data.service.name,
+          pet_animal: data.pet.animal,
+          pet_name: data.pet.name,
+          pet_breed: data.pet.breed,
+          pet_age: data.pet.age,
+        });
+        setSelectedDate(new Date(data.date.year, data.date.month - 1, data.date.day));
+        setTime(data.date.time);
+      } else {
+        throw new Error("Incomplete booking data received.");
+      }
     } catch (error) {
       console.error("Error fetching booking details:", error.message);
       alert("Failed to load booking details. Please try again.");
     }
-  }, [bookingId ,user]);
+  }, [bookingId ,user, nav]);
 
   useEffect(() => {
     console.log("fetching booking details");
-    if (!user) {
-      nav("/login");
+    if (!user || !user.token) {
+      console.error("User token is missing.");
+      nav("/Login");
     } else {
       fetchBookingDetails();
     }
@@ -103,7 +122,9 @@ const UpdateBooking = () => {
         age: form.pet_age,
       },
     };
+
     console.log("Updated Booking:", updatedBooking);
+    
     try {
       const response = await fetch(`${fetchURL}/bookings/${bookingId}`, {
         method: "PUT",
@@ -121,7 +142,7 @@ const UpdateBooking = () => {
         nav("/MainDashboard"); // Redirect to bookings list
       } else {
         const error = await response.json();
-        alert(`Error: ${error.message}`);
+        alert(`Error: ${error.message|| "Failed to update booking."}`);
       }
     } catch (err) {
       console.error(err);
