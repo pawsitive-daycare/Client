@@ -7,8 +7,8 @@ import { fetchURL, ourServices } from "../components/api";
 import "../styles/BookingDashboard.css";
 
 const UpdateBooking = () => {
-  const { user, booking } = useUserContext();
   const { bookingId } = useParams();
+  const { user } = useUserContext();
   const nav = useNavigate();
   const [time, setTime] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,12 +19,12 @@ const UpdateBooking = () => {
     pet_breed: "",
     pet_age: "",
   });
-
+  console.log("Booking:", bookingId);
   const fetchBookingDetails = useCallback(async () => {
-    console.log(`${fetchURL}/mybookings/${booking._id}`);
+    console.log(`${fetchURL}/mybookings/${bookingId}`);
     try {
       console.log("User", user);
-      const response = await fetch(`${fetchURL}/mybookings/${booking._id}`, {
+      const response = await fetch(`${fetchURL}/mybookings/${bookingId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -46,7 +46,7 @@ const UpdateBooking = () => {
       console.error("Error fetching booking details:", error.message);
       alert("Failed to load booking details. Please try again.");
     }
-  }, [booking ,user]);
+  }, [bookingId ,user]);
 
   useEffect(() => {
     console.log("fetching booking details");
@@ -127,6 +127,10 @@ const UpdateBooking = () => {
       console.error(err);
       alert("An error occurred while updating the booking.");
     }
+  };
+
+  const handleCancel = () => {
+    nav("/MainDashboard");
   };
 
   return (
@@ -233,6 +237,9 @@ const UpdateBooking = () => {
           <button type="submit" className="save-button">
             Update Booking
           </button>
+          <button type="button" className="cancel-button" onClick={handleCancel}>
+              Cancel
+            </button>
         </form>
       </div>
     </div>
@@ -240,158 +247,3 @@ const UpdateBooking = () => {
 };
 
 export default UpdateBooking;
-
-
-
-// import React, { useCallback,useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { fetchURL } from "../components/api";
-// import { useUserContext } from "../components/UserContext";
-// import "../styles/UpdateBooking.css";
-
-// const UpdateBooking = () => {
-//   const { user } = useUserContext();
-//   const [bookings, setBookings] = useState([]);
- 
-//   const nav = useNavigate();
-
-//   const [form, setForm] = useState({
-//     service: "",
-//     date: "",
-//     time: "",
-//     pet: "",
-//   });
-
-//   // const [loading, setLoading] = useState(true);
-//   // const [error, setError] = useState(null);
-
-  // const returnedBookings = useCallback(async () => {
-  //     console.log(`${fetchURL}/mybookings/${user._id}`);
-  //     try {
-  //       console.log("User", user);
-  //       const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
-  //         method: "GET",
-  //         "headers": {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           "Authorization": user.token,
-  //         },
-  //       });
-  //       const data = await response.json();
-  //       console.log("Bookings found");
-  //       setBookings(data);
-  //     } catch (err) {
-  //       console.log("Error fetching bookings: ", err.message);
-  //     }
-  //   }, [user]);
-  
-//     useEffect(() => {
-//       console.log("fetching bookings");
-//       if (user === undefined) {
-//         nav("/login");
-//       } else {
-//         returnedBookings();
-//       }
-//     }, [user, nav, returnedBookings]);
-
-  
-  
-//     const handleFormChange = (e) => {
-//     const { name, value } = e.target;
-//     setForm({ ...form, [name]: value });
-//   };
-
-//   const handleUpdate = async (e) => {
-//     e.preventDefault();
-
-//     console.log("Form Data:", form);
-//     console.log("Token:", user?.token);
-
-//     try {
-//       const response = await fetch(`${fetchURL}/bookings/${bookings._id}`, {
-//         method: "PUT",
-//         headers: {
-//           "Accept": "application/json",
-//           "Content-Type": "application/json",
-//           "Authorization": `Bearer ${user.token}`,
-//         },
-//         body: JSON.stringify(form),
-//       });
-
-//       const data = await response.json();
-//       console.log("Server Response:", data);
-//       setBookings();
-   
-      
-
-//       alert("Booking updated successfully!");
-//       nav("/MainDashboard");
-//     } catch (error) {
-//       console.error("Error updating booking:", error.message);
-//       alert("An error occurred. Please try again.");
-//     }
-//   };
-
-//   // if (loading) {
-//   //   return <p>Loading booking details...</p>;
-//   // }
-
-//   // if (error) {
-//   //   return <p>{error}</p>;
-//   // }
-
-//   return (
-//     <div className="update-booking-page">
-//       <h1>Update Booking</h1>
-//       <form className="update-booking-form" onSubmit={handleUpdate}>
-//         <div className="form-group">
-//           <label htmlFor="service">Service:</label>
-//           <input
-//             type="text"
-//             id="service"
-//             name="service"
-//             value={form.service}
-//             onChange={handleFormChange}
-//             required
-//           />
-//         </div>
-//         <div className="form-group">
-//           <label htmlFor="date">Date:</label>
-//           <input
-//             type="date"
-//             id="date"
-//             name="date"
-//             value={form.date}
-//             onChange={handleFormChange}
-//             required
-//           />
-//         </div>
-//         <div className="form-group">
-//           <label htmlFor="time">Time:</label>
-//           <input
-//             type="time"
-//             id="time"
-//             name="time"
-//             value={form.time}
-//             onChange={handleFormChange}
-//             required
-//           />
-//         </div>
-//         <div className="form-group">
-//           <label htmlFor="pet">Pet:</label>
-//           <input
-//             type="text"
-//             id="pet"
-//             name="pet"
-//             value={form.pet}
-//             onChange={handleFormChange}
-//             required
-//           />
-//         </div>
-//         <button type="submit" className="submit-button">Update Booking</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default UpdateBooking;

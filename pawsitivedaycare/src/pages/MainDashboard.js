@@ -150,7 +150,7 @@ const Dashboard = () => {
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
           );
-          console.log("el", today, bookingDate, { day: el.date.day, month: el.date.month, year: el.date.year });
+          console.log("el", today, bookingDate,  { day: el.date.day, month: el.date.month, year: el.date.year });
           /*if (today.getTime() > bookingDate.getTime()) {
             return null;
           }*/
@@ -162,7 +162,7 @@ const Dashboard = () => {
               month={el.date.month}
               year={el.date.year}
               service={el.service.name}
-              time={el.time}
+              time={el.date.time}
               price={el.service.price}
               petName={el.pet.name}
             />
