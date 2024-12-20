@@ -68,28 +68,39 @@ const Dashboard = () => {
 
     const deleteBooking = async () => {
       try {
-        const bookingToDelete = await fetch(
-          `${fetchURL}/mybookings/${booking._id}`,
-          {
+        const response = await fetch(`${fetchURL}/mybookings/${booking._id}`, {
             method: "DELETE",
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
-              authorization: user.token,
+              Authorization: `Bearer ${user.token}`,
             },
-          }
-        );
+          });
 
-        const data = await bookingToDelete.json();
-        if (data.code === 200) {
-          returnedBookings();
-        } else {
-          alert("Failed to remove booking");
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+    //     const data = await bookingToDelete.json();
+    //     if (data.code === 200) {
+    //       returnedBookings();
+    //     } else {
+    //       alert("Failed to remove booking");
+    //     }
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    // };
+
+    if (response.ok) {
+      await response.json();
+      alert("Booking removed successfully!");
+      returnedBookings(); // Refresh the bookings list
+    } else {
+      const errorData = await response.json();
+      alert(`Failed to remove booking: ${errorData.message || response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error deleting booking:", error.message);
+    alert("An error occurred while deleting the booking. Please try again.");
+  }
+};
 
     return (
       <div className="booking-card">
@@ -172,12 +183,12 @@ const Dashboard = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <div className="flex" id="my-detail-container">
+      {/* <div className="flex" id="my-detail-container">
         <h2 className="heading" id="my-detail">My detail</h2>
         <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
           <p>Update my detail</p>
           <i className="fas fa-chevron-right"></i></Link>
-      </div>
+      </div> */}
       <h2 className="heading">My bookings</h2>
         <BookingCardContainer/>
         <BookingNowCard/>
