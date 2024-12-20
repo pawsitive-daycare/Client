@@ -3,6 +3,7 @@ import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { Link, useNavigate } from "react-router-dom";
+// import { useUserContext } from "../components/UserContext";
 
 const getMonthName = (monthNumber) => {
   const monthNames = [
@@ -115,10 +116,10 @@ const Dashboard = () => {
             <Link
               className="update-button"
               to={`/update-booking/${booking._id}`}
-              onClick={addBookingToUserContext}
-            >
+              onClick={addBookingToUserContext}              
+            >             
               Modify Booking
-            </Link>
+            </Link> 
             <Link className="delete-button" to="" onClick={deleteBooking}>
               Cancel booking
             </Link>
