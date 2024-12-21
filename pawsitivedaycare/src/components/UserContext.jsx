@@ -6,10 +6,16 @@ export const UserContext = createContext(null);
 function UserContextProvider({ children }) {
   console.log("UserContextProvider is rendering");
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState( () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user || null
+  });
 
   console.log("Initial user state:", user);
   console.log("setUser function:", setUser);
+
+  localStorage.setItem("user", JSON.stringify(user));
+  console.log("User stored in local storage:", user);
 
   const addBookingToUserContext = (booking) => {
     setUser((prevUser) => ({ ...prevUser, booking }));

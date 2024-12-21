@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { 
+  useEffect
+   , useState } from "react";
 import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
 import { Link, useNavigate } from "react-router-dom";
-// import { useUserContext } from "../components/UserContext";
 
 const getMonthName = (monthNumber) => {
   const monthNames = [
@@ -18,7 +19,7 @@ const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
   const nav = useNavigate();
 
-  const returnedBookings = useCallback(async () => {
+  const fetchBookings = async () => {
     console.log(`${fetchURL}/mybookings/${user._id}`);
     try {
       console.log("User", user);
@@ -29,6 +30,7 @@ const Dashboard = () => {
           "Content-Type": "application/json",
           Authorization: user.token,
         },
+        // body: JSON.stringify({ userId: user._id }),
       });
       const data = await response.json();
       console.log("Bookings found");
@@ -36,18 +38,18 @@ const Dashboard = () => {
     } catch (err) {
       console.log("Error fetching bookings: ", err.message);
     }
-  }, [user]);
+  };
 
   useEffect(() => {
     console.log("fetching bookings");
-    if (user === undefined) {
+    if (!user) {
       nav("/login");
     } else {
-      returnedBookings();
+      fetchBookings();
     }
-  }, [user, nav, returnedBookings]);
+  }, [user, nav]);
 
-  const BookingCard = ({ booking ,day, month, year, service, time, price , petName}) => {
+  const BookingCard = ({ booking, day, month, year, service, time, price, petName }) => {
     const nthNumber = (x) => {
       let i = parseInt(String(x), 10);
       let j = i % 10;
@@ -70,37 +72,26 @@ const Dashboard = () => {
     const deleteBooking = async () => {
       try {
         const response = await fetch(`${fetchURL}/mybookings/${booking._id}`, {
-            method: "DELETE",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user.token}`,
-            },
-          });
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
 
-    //     const data = await bookingToDelete.json();
-    //     if (data.code === 200) {
-    //       returnedBookings();
-    //     } else {
-    //       alert("Failed to remove booking");
-    //     }
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // };
-
-    if (response.ok) {
-      await response.json();
-      returnedBookings(); // Refresh the bookings list
-    } else {
-      const errorData = await response.json();
-      alert(`Failed to remove booking: ${errorData.message || response.statusText}`);
-    }
-  } catch (error) {
-    console.error("Error deleting booking:", error.message);
-    alert("An error occurred while deleting the booking. Please try again.");
-  }
-};
+        if (response.ok) {
+          await response.json();
+          fetchBookings(); // Refresh the bookings list
+        } else {
+          const errorData = await response.json();
+          alert(`Failed to remove booking: ${errorData.message || response.statusText}`);
+        }
+      } catch (error) {
+        console.error("Error deleting booking:", error.message);
+        alert("An error occurred while deleting the booking. Please try again.");
+      }
+    };
 
     return (
       <div className="booking-card">
@@ -115,10 +106,10 @@ const Dashboard = () => {
             <Link
               className="update-button"
               to={`/update-booking/${booking._id}`}
-              onClick={addBookingToUserContext}              
-            >             
+              onClick={addBookingToUserContext}
+            >
               Modify Booking
-            </Link> 
+            </Link>
             <Link className="delete-button" to="" onClick={deleteBooking}>
               Cancel booking
             </Link>
@@ -149,7 +140,6 @@ const Dashboard = () => {
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
           );
-          // console.log("el", today, bookingDate,  { day: el.date.day, month: el.date.month, year: el.date.year });
           if (bookingDate < today) {
             return null;
           }
@@ -173,31 +163,25 @@ const Dashboard = () => {
 
   return (
     <main id="my-account-page">
-    <article className="page-header flex column j-c-center a-i-center">
-      <div id="my-account" className="main-bg-container"/>
-      <div className="heading-container text-shadow">
-        <h2 className="heading ">Welcome back <br/>{user && user.firstName ? user.firstName : "Visitor"} </h2>
-        <p className="heading-description">
-          Please see more information below.
-        </p>
-      </div>
-    </article>
-    <section className="context-container flex column a-i-left">
-      {/* <div className="flex" id="my-detail-container">
-        <h2 className="heading" id="my-detail">My detail</h2>
-        <Link id="update-my-detail" to="/update-booking/:bookingId" className='sub-menu flex'>
-          <p>Update my detail</p>
-          <i className="fas fa-chevron-right"></i></Link>
-      </div> */}
-      <h2 className="heading">My bookings</h2>
-        <BookingCardContainer/>
-        <BookingNowCard/>
-    </section>
-  </main>
+      <article className="page-header flex column j-c-center a-i-center">
+        <div id="my-account" className="main-bg-container" />
+        <div className="heading-container text-shadow">
+          <h2 className="heading">
+            Welcome back <br />
+            {user && user.firstName ? user.firstName : "Visitor"}
+          </h2>
+          <p className="heading-description">
+            Please see more information below.
+          </p>
+        </div>
+      </article>
+      <section className="context-container flex column a-i-left">
+        <h2 className="heading">My bookings</h2>
+        <BookingCardContainer />
+        <BookingNowCard />
+      </section>
+    </main>
   );
 };
 
 export default Dashboard;
-
-
-
