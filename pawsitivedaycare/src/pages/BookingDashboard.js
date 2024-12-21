@@ -106,7 +106,7 @@ const BookingDashboard = () => {
 
       <div className="book-appointment-container">
         <form className="appointment-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="forM-group">
             <label>Service</label>
             <select
               value={form.service_name}
@@ -125,7 +125,7 @@ const BookingDashboard = () => {
             </select>
           </div>
 
-          <div className="form-group">
+          <div className="forM-group">
             <label>Pet Information</label>
             <input
               type="text"
