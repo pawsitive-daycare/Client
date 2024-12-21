@@ -22,9 +22,9 @@ const UpdateBooking = () => {
   console.log("Booking:", bookingId);
   
   const fetchBookingDetails = useCallback(async () => {
-    console.log(`${fetchURL}/mybookings/${bookingId}`);
+    
     try {
-      const response = await fetch(`${fetchURL}/mybookings/${bookingId}`, {
+      const response = await fetch(`${fetchURL}/mybookings/booking/${bookingId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -125,7 +125,7 @@ const UpdateBooking = () => {
     console.log("Updated Booking:", updatedBooking);
     
     try {
-      const response = await fetch(`${fetchURL}/bookings/${bookingId}`, {
+      const response = await fetch(`${fetchURL}/mybookings/${bookingId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

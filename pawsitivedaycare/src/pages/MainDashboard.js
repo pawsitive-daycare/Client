@@ -20,10 +20,10 @@ const Dashboard = () => {
   const nav = useNavigate();
 
   const fetchBookings = async () => {
-    console.log(`${fetchURL}/mybookings/${user._id}`);
+    console.log(`${fetchURL}/mybookings/user/${user._id}`);
     try {
       console.log("User", user);
-      const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
+      const response = await fetch(`${fetchURL}/mybookings/user/${user._id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -140,9 +140,10 @@ const Dashboard = () => {
           const bookingDate = new Date(
             `${el.date.year} ${el.date.month} ${el.date.day}`
           );
-          if (bookingDate < today) {
-            return null;
-          }
+          console.log(today, bookingDate)
+          // if (bookingDate < today) {
+          //   return null;
+          // }
           return (
             <BookingCard
               key={idx}
