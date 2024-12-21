@@ -4,7 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useUserContext } from "../components/UserContext";
 import { fetchURL, ourServices } from "../components/api";
-import "../styles/BookingDashboard.css";
+import "../styles/UpdateBooking.css";
 
 const UpdateBooking = () => {
   const { bookingId } = useParams();
