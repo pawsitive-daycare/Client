@@ -1,6 +1,4 @@
-import React, { 
-  useEffect
-   , useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../styles/MainDashboard.css";
 import { fetchURL } from "../components/api";
 import { useUserContext } from "../components/UserContext";
@@ -19,35 +17,65 @@ const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
   const nav = useNavigate();
 
-  const fetchBookings = async () => {
-    console.log(`${fetchURL}/mybookings/user/${user._id}`);
+  const fetchBookings = useCallback(async () => {
+    if (!user || !user._id) {
+      console.error("User is undefined or missing user._id");
+      return;
+    }
+
+    console.log(`${fetchURL}/mybookings/${user._id}`);
     try {
-      console.log("User", user);
-      const response = await fetch(`${fetchURL}/mybookings/user/${user._id}`, {
+      const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: user.token,
         },
-        // body: JSON.stringify({ userId: user._id }),
       });
+      if (!response.ok) {
+        throw new Error(`Error fetching bookings: ${response.statusText}`);
+      }
       const data = await response.json();
       console.log("Bookings found");
       setBookings(data);
     } catch (err) {
       console.log("Error fetching bookings: ", err.message);
     }
-  };
+  }, [user]);
+
+
+
+  // const fetchBookings = async useC() => {
+  //   console.log(`${fetchURL}/mybookings/user/${user._id}`);
+  //   try {
+  //     console.log("User", user);
+  //     const response = await fetch(`${fetchURL}/mybookings/user/${user._id}`, {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         Authorization: user.token,
+  //       },
+  //       // body: JSON.stringify({ userId: user._id }),
+  //     });
+  //     const data = await response.json();
+  //     console.log("Bookings found");
+  //     setBookings(data);
+  //   } catch (err) {
+  //     console.log("Error fetching bookings: ", err.message);
+  //   }
+  // };
 
   useEffect(() => {
     console.log("fetching bookings");
     if (!user) {
       nav("/login");
+      
     } else {
       fetchBookings();
     }
-  }, [user, nav]);
+  }, [user, nav, fetchBookings]);
 
   const BookingCard = ({ booking, day, month, year, service, time, price, petName }) => {
     const nthNumber = (x) => {
