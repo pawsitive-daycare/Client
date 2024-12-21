@@ -23,9 +23,9 @@ const Dashboard = () => {
       return;
     }
 
-    console.log(`${fetchURL}/mybookings/${user._id}`);
+    
     try {
-      const response = await fetch(`${fetchURL}/mybookings/${user._id}`, {
+      const response = await fetch(`${fetchURL}/mybookings/user/${user._id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
