@@ -44,29 +44,6 @@ const Dashboard = () => {
     }
   }, [user]);
 
-
-
-  // const fetchBookings = async useC() => {
-  //   console.log(`${fetchURL}/mybookings/user/${user._id}`);
-  //   try {
-  //     console.log("User", user);
-  //     const response = await fetch(`${fetchURL}/mybookings/user/${user._id}`, {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: user.token,
-  //       },
-  //       // body: JSON.stringify({ userId: user._id }),
-  //     });
-  //     const data = await response.json();
-  //     console.log("Bookings found");
-  //     setBookings(data);
-  //   } catch (err) {
-  //     console.log("Error fetching bookings: ", err.message);
-  //   }
-  // };
-
   useEffect(() => {
     console.log("fetching bookings");
     if (!user) {
