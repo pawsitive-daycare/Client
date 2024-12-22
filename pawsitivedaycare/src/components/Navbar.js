@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import logo from "../assets/logo.jpg";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import { useUserContext } from "./UserContext";
 
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { user, setUser } = useUserContext();
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const handleLogout = () => {
+        setUser(null);
+        localStorage.removeItem("user");
     };
 
     return (
@@ -36,17 +43,32 @@ function Navbar() {
             </nav>
 
             <div className="action-btn">
-                <Link to="/LogIn">
-                    <button className="login-btn">
-                        <span className="login-text">Log In</span>
-                    </button>
-                </Link>
-                <Link to="/SignUp">
-                    <button className="signup-btn">
-                        <span className="signup-text">Sign Up</span>
-                    </button>
-                </Link>
-            </div>
+                {!user ? (
+                    <>
+                        <Link to="/LogIn">
+                            <button className="login-btn">
+                                <span className="login-text">Log In</span>
+                            </button>
+                        </Link>
+                        <Link to="/SignUp">
+                            <button className="signup-btn">
+                                <span className="signup-text">Sign Up</span>
+                            </button>
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <span className="welcome-text">
+                            Welcome!
+                        </span>
+                        <button className="logout-btn" onClick={handleLogout}>
+                            Logout
+                        </button>
+                </>
+                )}
+                </div>
+
+            
             <button className="hamburger-menu" onClick={toggleMenu}>
                 {menuOpen ? "✖" : "☰"}
             </button>
