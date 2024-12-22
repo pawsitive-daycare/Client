@@ -94,8 +94,11 @@ const BookingDashboard = () => {
       }
     } catch (err) {
       console.error(err);
-      alert("An error occurred while creating the booking.");
+      alert("Sorry, you have to complete all the form first). Please try again.");
     }
+  };
+  const handleCancel = () => {
+    nav("/MainDashboard");
   };
 
   return (
@@ -202,6 +205,9 @@ const BookingDashboard = () => {
           <button type="submit" className="save-button">
             Save Booking
           </button>
+          <button type="button" className="cancel-button" onClick={handleCancel}>
+              Cancel
+            </button>
         </form>
       </div>
     </div>

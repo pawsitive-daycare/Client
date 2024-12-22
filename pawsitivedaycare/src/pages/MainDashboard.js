@@ -87,6 +87,7 @@ const Dashboard = () => {
 
         if (response.ok) {
           await response.json();
+          alert("Booking successfully removed.");
           fetchBookings(); // Refresh the bookings list
         } else {
           const errorData = await response.json();

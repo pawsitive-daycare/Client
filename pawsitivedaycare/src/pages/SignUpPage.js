@@ -42,9 +42,10 @@ const SignUpPage = () => {
         navigate("/login", {
           state: { message: "Account created successfully. Please log in." }
         })
+        alert("Account Created Successfully, Please Log In");
       } catch (error) {
         console.log(error);
-        alert("An error occurred while creating your account. Please try again.");
+        alert("Account Already Exists, Please Log In");
       }
     }
 

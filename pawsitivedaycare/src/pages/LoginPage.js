@@ -31,6 +31,7 @@ const Login = () => {
         });
 
         console.log("User logged in successfully");
+        alert("User logged in successfully");
         navigate("/MainDashboard");
       } else {
         console.error("Invalid response structure:", response);
@@ -38,7 +39,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log("Error logging in", error.message);
-      alert("An error occurred during login. Please try again.");
+      alert("Sorry invalid credentials. Please try again.");
     }
   };
 
