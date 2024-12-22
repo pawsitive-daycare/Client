@@ -61,6 +61,13 @@ function Navbar() {
                         <span className="welcome-text">
                             Welcome!
                         </span>
+
+                        <Link to="/MainDashboard">
+                            <button className="maindashoard-btn">
+                                <span className="maindashboard-text">Dashboard</span>
+                            </button>
+                        </Link>
+                        
                         <button className="logout-btn" onClick={handleLogout}>
                             Logout
                         </button>
